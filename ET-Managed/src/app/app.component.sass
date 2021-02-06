@@ -1,0 +1,26 @@
+@import "./variables.sass"
+
+.main
+    min-width: 1280px
+    min-height: 1024px
+    height: 100vh
+    background-color: $base-color
+    display: flex
+    flex-direction: column
+    .site-info
+        background-color: $site-info-color
+        flex-basis: 50px
+        overflow: hidden
+    .content
+        flex-grow: 1
+        background-color: $base-color
+        display: flex
+        flex-direction: row
+    .navigation-panel
+        background-color: $base-color
+        flex-basis: 200px
+        border-right: 1px solid rgb(222, 223, 226)
+    .main-content
+        flex-grow: 1
+        padding-left: 10px
+        background-color: $base-color
