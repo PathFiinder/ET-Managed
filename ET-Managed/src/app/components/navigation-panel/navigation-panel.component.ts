@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationList } from '../models/naviagation-list.model';
-
-let listItems = new Array<NavigationList>();
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { NavigationList, NavigationListItem } from '../models/naviagation-list.model';
 
 @Component({
   selector: 'app-navigation-panel',
@@ -10,10 +10,14 @@ let listItems = new Array<NavigationList>();
 })
 
 export class NavigationPanelComponent implements OnInit {
+  listItems: Observable<{navigationList: NavigationList}>;
 
-  constructor() { }
+  constructor(
+    private store: Store<{navigationList: {navigationList: NavigationList}}>
+  ) { }
 
   ngOnInit(): void {
+    this.listItems = this.store.select('navigationList');
   }
 
 }

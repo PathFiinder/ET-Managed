@@ -1,32 +1,31 @@
-import { NavigationItem, NavigationList, NavigationListItem } from '../../models/naviagation-list.model';
-import { ActionType, NavigationPanelAction } from './navigation-panel-action.model';
-import { GetNavigationList } from './navigation-panel.actions';
+import { NavigationItem, NavigationList, NavigationListItem, NavigationListItemIconClass } from '../../models/naviagation-list.model';
+import { ActionType } from '../../models/navigation-panel-action.model';
+import * as NavigationPanelListActions from './navigation-panel.actions';
 
 const initialNavigationList: NavigationList = {
     navigationList: [
-        new NavigationItem(NavigationListItem.OVERVIEW),
-        new NavigationItem(NavigationListItem.TASKS),
-        new NavigationItem(NavigationListItem.BUDEGT),
-        new NavigationItem(NavigationListItem.CHARTS),
-        new NavigationItem(NavigationListItem.CALENDAR),
+        new NavigationItem(NavigationListItem.OVERVIEW, NavigationListItemIconClass.OVERVIEW_ICON),
+        new NavigationItem(NavigationListItem.TASKS, NavigationListItemIconClass.TASKS_ICON),
+        new NavigationItem(NavigationListItem.BUDEGT, NavigationListItemIconClass.BUDEGT_ICON),
+        new NavigationItem(NavigationListItem.CHARTS, NavigationListItemIconClass.CHARTS_ICON),
+        new NavigationItem(NavigationListItem.CALENDAR, NavigationListItemIconClass.CALENDAR_ICON),
     ]
 }
 
-const getNavigationList = (state: NavigationList) => {
+
+export const actionExecutors: Map<string, (state: NavigationList) => NavigationList> = new Map();
+actionExecutors.set(ActionType.GET_NAVIGATION_LIST, getNavigationPanelList);
+
+function getNavigationPanelList(state: NavigationList) {
     return {
         ...state
-    }
+    };
 }
 
-// const navigationListReducersMap = new Map([
-//     [ActionType.GET_NAVIGATION_LIST, (state: NavigationList, action: NavigationPanelAction) => getNavigationList(state,action)]
-// ])
-
-// navigationListReducersMap.get(action.getType())(state, action)
-
-export function navigationListReducers(state: NavigationList = initialNavigationList, action: NavigationPanelAction) {
-    switch(action.getType()) {
-        case ActionType.GET_NAVIGATION_LIST: 
-            getNavigationList(state);
+export function navigationListReducers(state: NavigationList = initialNavigationList, action: NavigationPanelListActions.GetNavigationList) {
+    if (!actionExecutors.get(action.type)) {
+        return state;
     }
+    return actionExecutors.get(action.type)(state);
 }
+

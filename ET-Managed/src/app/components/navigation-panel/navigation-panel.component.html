@@ -1,1 +1,10 @@
-<h1>Navigation</h1>
+<div class="navigation-panel">
+    <ul class="navigation-panel__list">
+        <li  class="navigation-panel__list__item" *ngFor="let item of (listItems | async).navigationList;">
+            <div class="navigation-panel__list__content list-content">
+                <i class="{{item.iconClass}} list-content__icon"></i>
+                <h3 class="list-content__name">{{item.name}}</h3>
+            </div>
+        </li>
+    </ul>
+</div>

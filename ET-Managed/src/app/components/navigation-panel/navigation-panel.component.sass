@@ -1,0 +1,35 @@
+@import "../..//variables.sass"
+
+.navigation-panel
+    height: 250px
+    cursor: pointer
+    .navigation-panel__list
+        list-style-type: none
+        display: flex
+        flex-direction: column
+        justify-content: center
+        height: 100%
+        position: relative
+        .navigation-panel__list__item
+            flex-basis: calc(100% / 5)
+            font-size: 22px
+            letter-spacing: 2px
+            text-transform: uppercase
+            position: relative
+            border-bottom: 1px solid $border-color
+            &:hover
+                background-color: $navigation-color
+            .navigation-panel__list__content, .list-content
+                display: flex
+                flex-direction: row
+                position: absolute
+                top: 50%
+                left: 10px
+                transform: translateY(-50%)
+                .list-content__icon
+                    font-size: 30px
+                    width: 30px
+                    text-align: center
+                    margin-right: 20px
+                .list-content__name
+                    font-weight: normal
