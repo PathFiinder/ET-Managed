@@ -6,6 +6,7 @@
     height: 100%
     flex-direction: row
     align-items: center
+    position: relative
     &__title
         font-size: 30px
         margin-left: 20px
@@ -17,7 +18,7 @@
         text-align: center
     &__icon-container, .icon-container
         flex-basis: 180px
-        margin-right: 20px
+        margin-right: 50px
         height: 40px
         .icon-container__list
             display: flex
@@ -29,6 +30,7 @@
                 margin: 4px
                 height: calc(100% - 8px)
                 width: calc(100% - 8px)
+                z-index: 1
                 .icon-container__item__icon
                     border: none
                     height: 100%
@@ -38,4 +40,49 @@
                     cursor: pointer
                     .icon
                         font-size: 26px
-                        
+    &__notification-container, .notification-container
+        height: 200px
+        width: 400px
+        background-color: $base-color
+        border-right: 1px solid black
+        border-bottom: 1px solid black
+        border-left: 1px solid black
+        position: absolute
+        top: 100%
+        right: calc(60px + 60px + 50px)
+        color: black
+        .notification-container__nav
+            display: flex
+            flex-direction: row
+            align-items: center
+            height: 50px
+            border-bottom: 1px solid $border-color
+            .notification-container__content
+                margin-left: 10px
+                font-size: 20px
+                font-weight: normal
+                flex-grow: 1
+            .notification-container__buttons
+                flex-basis: 150px
+                height: 34px
+                margin-right: 8px
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                .notification-container__button
+                    border: 0.3px solid $border-color
+                    color: rgb(157, 159, 163)
+                    cursor: pointer
+                    &--hide
+                        flex-basis: 90px
+                    &--clear
+                        flex-basis: 50px
+                    &:hover
+                        background-color: $navigation-color
+                        color: white
+                        border: 1px solid black
+        .notification-menu__title--empty
+            text-align: center
+            line-height: 150px
+            font-size: 18px
+            font-weight: bold

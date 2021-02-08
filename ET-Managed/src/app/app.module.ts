@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SiteInfoComponent } from './components/site-info/site-info.component';
 import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
-import { navigationListReducers } from './components/navigation-panel/store/navigation-panel.reducers';
+import { navigationListReducers } from './services/stores/navigation/navigation-panel.reducers';
 
 @NgModule({
   declarations: [

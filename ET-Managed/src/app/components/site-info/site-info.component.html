@@ -4,8 +4,8 @@
     <div class="site-info-panel__icon-container icon-container">
         <ul class="icon-container__list">
             <li class="icon-container__item">
-                <button class="icon-container__item__icon button">
-                    <i class="far fa-comment icon"></i>
+                <button  class="icon-container__item__icon button" (click)="onNotificationButtonClick()">
+                    <i #notificationButton id="notificationButton" class="far fa-comment icon"></i>
                 </button>
             </li>
             <li class="icon-container__item">
@@ -19,5 +19,17 @@
                 </button>
             </li>
         </ul>
+    </div>
+    <div #notificationPanel *ngIf="isNotificationButtonActive" class="site-info-panel__notification-container notification-container">
+        <div class="notification-container__nav">
+            <h4 class="notification-container__content">{{numberOfActiveNotifications}} notifications</h4>
+            <div class="notification-container__buttons">
+                <button class="notification-container__button notification-container__button--hide">Hide popups</button>
+                <button class="notification-container__button notification-container__button--clear">Clear</button>
+            </div>
+        </div>
+        <div class="notification-container__menu notification-menu">
+            <h3 *ngIf="isEmptyNotificationContainer" class="notification-menu__title--empty">No notifications to display</h3>
+        </div>
     </div>
 </div>

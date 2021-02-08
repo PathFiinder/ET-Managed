@@ -1,5 +1,5 @@
-import { NavigationItem, NavigationList, NavigationListItem, NavigationListItemIconClass } from '../../models/naviagation-list.model';
-import { ActionType } from '../../models/navigation-panel-action.model';
+import { NavigationItem, NavigationList, NavigationListItem, NavigationListItemIconClass } from '../../../components/models/naviagation-list.model';
+import { ActionType } from '../../../components/models/navigation-panel-action.model';
 import * as NavigationPanelListActions from './navigation-panel.actions';
 
 const initialNavigationList: NavigationList = {
@@ -11,7 +11,6 @@ const initialNavigationList: NavigationList = {
         new NavigationItem(NavigationListItem.CALENDAR, NavigationListItemIconClass.CALENDAR_ICON),
     ]
 }
-
 
 export const actionExecutors: Map<string, (state: NavigationList) => NavigationList> = new Map();
 actionExecutors.set(ActionType.GET_NAVIGATION_LIST, getNavigationPanelList);
