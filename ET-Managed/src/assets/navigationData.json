@@ -1,0 +1,26 @@
+
+    {
+        "navigationList": [
+            {
+                "name": "Overviews",
+                "iconClass": "far fa-sticky-note"
+            },
+            {
+                "name": "Tasks",
+                "iconClass": "far fa-clipboard"
+            },
+            {
+                "name": "Budget",
+                "iconClass": "far fa-credit-card"
+            },
+            {
+                "name": "Charts",
+                "iconClass": "fas fa-chart-line"
+            },
+            {
+                "name": "Calendar",
+                "iconClass": "far fa-calendar"
+            }
+            
+        ]
+    }

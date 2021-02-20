@@ -1,9 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs/operators';
-import { NotificationItem, NotificationItemCategory, NotificationListItem } from '../../models/notifications-list.model';
-import * as NotificationListActions from '../../../services/stores/notifications/notifications-list.actions';
-import { Observable, Subscription } from 'rxjs';
+import { NotificationItem, NotificationItemCategory, NotificationList } from '../../models/notifications-list.model';
+import * as NotificationListActions from '../../../services/stores/actions/notifications-list.actions';
+import { Observable } from 'rxjs';
+import {NotificationActionType} from '../../models/notification-panel-action.model'
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-notifications-container',
@@ -14,17 +15,20 @@ export class NotificationsContainerComponent implements OnInit {
 
   public numberOfActiveNotifications: number = 0;
   public isEmptyNotificationContainer: boolean = true;
-  public notificationsList: NotificationListItem;
-  private subscription: Subscription;
+  notificationsList: Observable<NotificationList> = 
+    this.store.select(state => state.notificationList)
+    .pipe(tap(list => this.numberOfActiveNotifications = list.notificationList.length));
+
 
 
   constructor(
-    private store: Store<{notificationList: {notificationListItem: NotificationItem[]}}>
+    private store: Store<{notificationList: NotificationList}>
   ) {
-    this.subscription = this.store.select('notificationList').pipe(map(list => this.notificationsList = list)).subscribe()
+   
   }
 
   ngOnInit(): void {
+    this.store.dispatch({type: NotificationActionType.GET_NOTIFICATIONS_LIST})
     this.checkNumberOfActiveNotifications()
   }
 
@@ -38,7 +42,7 @@ export class NotificationsContainerComponent implements OnInit {
 
   private checkNumberOfActiveNotifications(): void {
     if(this.notificationsList){
-      this.numberOfActiveNotifications = this.notificationsList.notificationListItem.length
+      
       this.isEmptyNotificationContainer = false;
     }
   }

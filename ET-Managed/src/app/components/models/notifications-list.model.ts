@@ -12,6 +12,6 @@ export class NotificationItem {
     constructor(public id: number, public nameShort: string, public nameLong: string, public category: NotificationItemCategory, isExpanded: boolean) {}
 }
 
-export class NotificationListItem {
-    notificationListItem: NotificationItem[]
+export class NotificationList {
+    notificationList: NotificationItem[]
 }

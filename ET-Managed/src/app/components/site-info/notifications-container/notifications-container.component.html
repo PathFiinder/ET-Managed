@@ -9,7 +9,7 @@
     <div class="notification-container__menu notification-menu">
         <h3 *ngIf="isEmptyNotificationContainer" class="notification-menu__title--empty">No notifications to display</h3>
         <ul class="notification-menu__list">
-            <li  class="notification-menu__list__item" *ngFor="let item of notificationsList.notificationListItem">
+            <li  class="notification-menu__list__item" *ngFor="let item of (notificationsList | async).notificationList">
                 <app-notification-item [item]="item"></app-notification-item>
             </li>
         </ul>
