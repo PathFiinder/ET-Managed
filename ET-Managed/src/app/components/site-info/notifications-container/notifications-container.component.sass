@@ -1,7 +1,7 @@
 @import "../../..//variables.sass"
 
 .notification-container
-        height: 200px
+        height: 250px
         width: 400px
         background-color: $base-color
         border-right: 1px solid black
@@ -49,15 +49,17 @@
                 display: none
             &__title--empty
                 text-align: center
-                line-height: 150px
+                line-height: 200px
                 font-size: 18px
                 font-weight: bold
             .notification-menu__list
                 display: flex
                 flex-direction: column
                 .notification-menu__list__item
-                    height: 50px
+                    height: 62px
                     margin: 2px
                     border: 1px solid $border-color
+                .notification-menu__list__item--expanded
+                    height: 80px
 
 

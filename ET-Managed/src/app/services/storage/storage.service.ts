@@ -15,4 +15,5 @@ export class StorageService {
     getotificationDataJSON(){
         return this.http.get('../../../assets/notificationData.json')
     }
+
 }

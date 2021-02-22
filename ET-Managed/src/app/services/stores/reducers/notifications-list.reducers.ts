@@ -17,6 +17,7 @@ const reducer = createReducer(initialNotificationsList,
         return { ...state, notificationList: payload.notificationList}
     }),
     on(NotificationListActions.AddNotificationToList, (state: notificationState, { payload }) => {
+        
         return {
             ...state,
             notificationList: [...state.notificationList, payload]

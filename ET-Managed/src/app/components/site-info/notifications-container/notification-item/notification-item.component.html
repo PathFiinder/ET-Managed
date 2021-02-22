@@ -1,4 +1,6 @@
 
 <div class="notification-menu__list__content list-content">
+    <i class="list-cottent__priorityIcon far fa-bell" [ngClass]="definePrirotyOfNotification(item.category)"></i>
     <h3 class="list-content__name">{{item.nameShort}}</h3>
+    <button class="list-cottent__expandIcon fas fa-chevron-down"></button>
 </div>

@@ -1,4 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { NotificationActionType } from '../models/notification-panel-action.model';
+import { NotificationList } from '../models/notifications-list.model';
 
 @Component({
   selector: 'app-site-info',
@@ -12,7 +15,7 @@ export class SiteInfoComponent implements OnInit {
   @ViewChild('notificationButton') notificationButton: ElementRef;
   @ViewChild('notificationPanel') notificationPanel: ElementRef;
 
-  constructor(private renderer: Renderer2) 
+  constructor(private renderer: Renderer2, private store: Store<{notificationList: NotificationList}>) 
     { 
     this.renderer.listen('window', 'click',(e:Event)=>{
     this.checkNotificationButtonStatus(e);
@@ -20,6 +23,7 @@ export class SiteInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.dispatch({type: NotificationActionType.GET_NOTIFICATIONS_LIST})
   }
 
   public onNotificationButtonClick(): void {

@@ -4,25 +4,29 @@
             "id": 0,
             "nameShort": "Notification 1",
             "nameLong": "Notification 1 about something",
-            "category": "Irrelevant"
+            "category": "Irrelevant",
+            "isExpanded": true
         },
         {
             "id": 1,
             "nameShort": "Notification 2",
             "nameLong": "Notification 2 about something",
-            "category": "Normal"
+            "category": "Normal",
+            "isExpanded": false
         },
         {
             "id": 2,
             "nameShort": "Notification 3",
             "nameLong": "Notification 3 about something",
-            "category": "Important"
+            "category": "Important",
+            "isExpanded": false
         },
         {
             "id": 3,
             "nameShort": "Notification 4",
             "nameLong": "Notification 4 about something",
-            "category": "Very Important"
+            "category": "Very Important",
+            "isExpanded": false
         }
     ]
 }

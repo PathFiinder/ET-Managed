@@ -1,6 +1,6 @@
 <div class="site-info-panel__notification-container notification-container">
     <div class="notification-container__nav">
-        <h4 class="notification-container__content">{{numberOfActiveNotifications}} notifications</h4>
+        <h4 class="notification-container__content">{{(notificationsList | async).notificationList.length}} notifications</h4>
         <div class="notification-container__buttons">
             <button #hidePopupsButton (click)="onHidePopupsButtonClick()" class="notification-container__button notification-container__button--hide">Hide popups</button>
             <button class="notification-container__button notification-container__button--clear">Clear</button>
@@ -9,7 +9,7 @@
     <div class="notification-container__menu notification-menu">
         <h3 *ngIf="isEmptyNotificationContainer" class="notification-menu__title--empty">No notifications to display</h3>
         <ul class="notification-menu__list">
-            <li  class="notification-menu__list__item" *ngFor="let item of (notificationsList | async).notificationList">
+            <li  class="notification-menu__list__item" *ngFor="let item of (notificationsList | async).notificationList" [ngClass]="item.isExpanded ? 'notification-menu__list__item--expanded' : ''">
                 <app-notification-item [item]="item"></app-notification-item>
             </li>
         </ul>
