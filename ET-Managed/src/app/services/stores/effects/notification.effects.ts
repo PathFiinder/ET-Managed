@@ -12,7 +12,7 @@ export class NotificationEffects {
     loadNavigationList$ = createEffect(() =>
     this.action$.pipe(
       ofType(NotificationActionType.GET_NOTIFICATIONS_LIST),
-      mergeMap(() => this.storageService.getotificationDataJSON()
+      mergeMap(() => this.storageService.getNotificationDataJSON()
         .pipe(
           map(notificationList => notificationActions.GetNotificationListSuccess({payload: notificationList})),
           catchError(() => of({ type: NotificationActionType.GET_NOTIFICATIONS_LIST_FAILURE, error: 'Error while data fetch' }))

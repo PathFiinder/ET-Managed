@@ -12,7 +12,7 @@ export class StorageService {
         return this.http.get('../../../assets/navigationData.json')
     }
 
-    getotificationDataJSON(){
+    getNotificationDataJSON(){
         return this.http.get('../../../assets/notificationData.json')
     }
 
