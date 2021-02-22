@@ -35,18 +35,22 @@ export class SiteInfoComponent implements OnInit {
   }
 
   private checkIfNotificationButtonOrPanelIsActive(e: Event) {
+    console.log(e.target);
     if (!this.notificationButton.nativeElement.contains(e.target) && !this.notificationPanel.nativeElement.contains(e.target)) {
+      console.log("dwa")
       this.setNotificationButtonActiveToFalse();
     }
   }
 
   private checkIfNotificationButtonIsActive(e: Event) {
     if (!this.notificationButton.nativeElement.contains(e.target)) {
+      console.log("jeden")
       this.setNotificationButtonActiveToFalse();
     }
   }
 
   private checkNotificationButtonStatus(e: Event) {
+    console.log(this.isNotificationButtonActive)
     if (this.isNotificationButtonActive) {
       this.checkIfNotificationButtonOrPanelIsActive(e);
     } else {

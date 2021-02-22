@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { NotificationItemPriority } from 'src/app/components/models/notification-item-priority.model';
-import { NotificationItem, NotificationItemCategory } from '../../../models/notifications-list.model';
+import { NotificationActionType } from 'src/app/components/models/notification-panel-action.model';
+import { NotificationItem, NotificationItemCategory, NotificationList } from '../../../models/notifications-list.model';
 
 @Component({
   selector: 'app-notification-item',
@@ -17,9 +19,13 @@ export class NotificationItemComponent implements OnInit {
     [NotificationItemCategory.VERY_IMPORTANT, () => this.getVeryImportantPriority()]
   ])
 
-  constructor() { }
+  constructor( private store: Store<{notificationList: NotificationList}>) { }
 
   ngOnInit(): void {
+  }
+
+  public onExpandOrDropButtonClick(notificationItemId: number): void {
+    this.store.dispatch({type: NotificationActionType.UPDATE_NOTIFICATION_ITEM, payload: notificationItemId});
   }
 
   public definePrirotyOfNotification(itemCategory: NotificationItemCategory): NotificationItemPriority {
