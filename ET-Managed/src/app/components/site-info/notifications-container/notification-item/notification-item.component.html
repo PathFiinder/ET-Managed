@@ -1,6 +1,10 @@
 
-<div class="notification-menu__list__content list-content">
-    <i class="list-cottent__priorityIcon far fa-bell" [ngClass]="definePrirotyOfNotification(item.category)"></i>
-    <h3 class="list-content__name">{{item.nameShort}}</h3>
-    <button class="list-cottent__expandIcon fas fa-chevron-down" (click)="onExpandOrDropButtonClick(item.id)"></button>
+<div class="notification-menu__list__content list-content" (click)="changeNotificationItemToActive(item.id, item.isActive, $event)">
+    <i class="list-content__priorityIcon far fa-bell" [ngClass]="definePriorityOfNotification(item.category)"></i>
+    <h3 class="list-content__name" [ngClass]="item.isExpanded ? 'list-content__name--isExpanded' : ''">{{item.nameShort}}</h3>
+    <button class="list-content__expandIcon fas fa-chevron-down" (click)="onExpandOrDropButtonClick(item.id, item.isActive, $event)" [ngClass]="onExpandIconChange(item.isExpanded)"></button>
+    <button class="list-content__binIcon fas fa-trash" (click)="onBinIconButtonChange(item.id, item.isActive, $event)"></button>
+    <div *ngIf="item.isExpanded">
+        <p class="list-content__longName">{{item.nameLong}}</p>
+    </div>
 </div>

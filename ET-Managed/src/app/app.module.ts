@@ -8,6 +8,8 @@ import { NavigationPanelComponent } from './components/navigation-panel/navigati
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { NotificationsContainerComponent } from './components/site-info/notifications-container/notifications-container.component';
 import { NotificationItemComponent } from './components/site-info/notifications-container/notification-item/notification-item.component';
+import { UserInfoContainer } from './components/site-info/user-info-container/user-info-container';
+import { SessionInformationComponent } from './components/site-info/user-info-container/session-information/session-information.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {reducers} from './services/stores/index';
@@ -22,7 +24,9 @@ import { NotificationEffects } from './services/stores/effects/notification.effe
     NavigationPanelComponent,
     MainContentComponent,
     NotificationsContainerComponent,
-    NotificationItemComponent
+    NotificationItemComponent,
+    UserInfoContainer,
+    SessionInformationComponent
   ],
   imports: [
     BrowserModule,

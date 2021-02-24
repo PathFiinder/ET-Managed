@@ -15,12 +15,13 @@ const initialNotificationsList: notificationState = {
 
 const reducer = createReducer(initialNotificationsList,
     on(NotificationListActions.GetNotificationListSuccess, (state: notificationState, {payload}) => {
-        return { ...state, notificationList: payload.notificationList}
+        return { ...state, notificationList: payload.notificationList, isNewNotification: payload.isNewNotification}
     }),
     on(NotificationListActions.AddNotificationToList, (state: notificationState, { payload }) => {
         return {
             ...state,
-            notificationList: [...state.notificationList, payload]
+            notificationList: [...state.notificationList, payload],
+            isNewNotification: true
         }
     }),
     on(NotificationListActions.UpdateNotificationItem, (state: notificationState, { payload }) => {
@@ -33,8 +34,48 @@ const reducer = createReducer(initialNotificationsList,
               }
             : notificationItem)
         }
-    })
-    )
+    }),
+    on(NotificationListActions.UpdateNotificationItemIsActive, (state: notificationState, { payload }) => {
+        return {
+            ...state,
+            notificationList: state.notificationList.map(notificationItem => notificationItem.id === payload
+            ? { 
+                 ...notificationItem, 
+                 isActive: false
+              }
+            : notificationItem),
+            isNewNotification: state.notificationList.filter(notificationItem => notificationItem.id === payload && notificationItem.isActive).length !== 0 ? false : true
+        }
+    }),
+    on(NotificationListActions.UpdateNotificationIsNew, (state: notificationState) => {
+        return {
+            ...state,
+            isNewNotification: false
+        }
+    }),
+    on(NotificationListActions.DeleteNotification, (state: notificationState, {payload}) => {
+        return {
+            ...state,
+            notificationList: state.notificationList.filter(notificationItem => notificationItem.id !== payload)
+        }
+    }),
+    on(NotificationListActions.DeleteAllNotifications, (state: notificationState) => {
+        return {
+            ...state,
+            notificationList: []
+        }
+    }),
+    on(NotificationListActions.HidePopupsOnNotificationList, (state: notificationState) => { 
+        return {
+            ...state,
+            notificationList: state.notificationList.map(notificationItem => notificationItem.isExpanded === true
+                ? { 
+                     ...notificationItem, 
+                     isExpanded: false
+                  }
+                : notificationItem)
+        }
+    }))
 
 
 export function notificationsListReducers(state: notificationState = initialNotificationsList, action: Action) {

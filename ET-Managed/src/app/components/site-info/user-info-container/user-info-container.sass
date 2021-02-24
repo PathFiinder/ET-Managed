@@ -1,0 +1,30 @@
+@import "../../../variables.sass"
+
+.user-info-container
+    height: 57px
+    width: 150px
+    background-color: $base-color
+    border-right: 1px solid black
+    border-bottom: 1px solid black
+    border-left: 1px solid black
+    position: absolute
+    top: 100%
+    right: calc(60px + 50px)
+    color: black
+    display: none
+    &--active
+        display: block
+    .user-info-container__list
+        height: 100%
+        .user-info-container__item
+            list-style-type: none
+            font-size: 15px
+            padding: 2px 5px
+            text-align: left
+            height: 28px
+            cursor: pointer
+            &:hover
+                background-color: $navigation-color
+                color: white
+            &:nth-of-type(1)
+                border-bottom: 1px solid $border-color

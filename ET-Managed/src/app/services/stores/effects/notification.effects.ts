@@ -9,7 +9,7 @@ import * as notificationActions from '../actions/notifications-list.actions'
 
 export class NotificationEffects { 
 
-    loadNavigationList$ = createEffect(() =>
+    loadNotificationList$ = createEffect(() =>
     this.action$.pipe(
       ofType(NotificationActionType.GET_NOTIFICATIONS_LIST),
       mergeMap(() => this.storageService.getNotificationDataJSON()
@@ -19,7 +19,8 @@ export class NotificationEffects {
         )
       )
     )
-  );
+    );
+
 
     constructor(private action$: Actions, private storageService: StorageService){}
 

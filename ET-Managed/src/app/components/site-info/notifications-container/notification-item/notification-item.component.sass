@@ -1,7 +1,10 @@
 .notification-menu__list__content, .list-content
     height: 100%
+    width: 100%
     position: relative
-    .list-cottent__priorityIcon
+    &--active
+        border: 1px solid red
+    .list-content__priorityIcon
         position: absolute
         top: 50%
         left: 10px
@@ -21,11 +24,32 @@
         max-width: calc(100% - 40px - 40px)
         margin-left: 45px
         line-height: 62px
-    .list-cottent__expandIcon
+        &--isExpanded
+            line-height: 40px
+    .list-content__expandIcon
         font-size: 20px
         position: absolute
-        top: 10px
+        top: 5px
         right: 10px
         border: none
         background-color: transparent
         cursor: pointer
+        &--isExpanded
+            display: block
+            transform: rotate(180deg)
+        &--noExpanded
+            display: block
+    .list-content__binIcon
+        font-size: 18px
+        position: absolute
+        bottom: 5px
+        right: 10px
+        border: none
+        background-color: transparent
+        cursor: pointer
+    .list-content__longName
+        font-size: 18px
+        width: 100%
+        max-width: calc(100% - 40px - 40px)
+        margin-left: 45px
+        line-height: 30px

@@ -1,0 +1,9 @@
+<div class="user-info-container" [ngClass]="isUserInfoActive ? 'user-info-container--active' : ''">
+    <ul class="user-info-container__list">
+        <li class="user-info-container__item" (click)="onSessionInfoClick()">Session information</li>
+        <li class="user-info-container__item">Log out</li>
+    </ul>
+</div>
+<div *ngIf="isSessionInformationActive">
+    <app-session-information></app-session-information>
+</div>

@@ -5,28 +5,33 @@
             "nameShort": "Notification 1",
             "nameLong": "Notification 1 about something",
             "category": "Irrelevant",
-            "isExpanded": true
+            "isExpanded": true,
+            "isActive": false
         },
         {
             "id": 1,
             "nameShort": "Notification 2",
             "nameLong": "Notification 2 about something",
             "category": "Normal",
-            "isExpanded": false
+            "isExpanded": false,
+            "isActive": false
         },
         {
             "id": 2,
             "nameShort": "Notification 3",
             "nameLong": "Notification 3 about something",
             "category": "Important",
-            "isExpanded": false
+            "isExpanded": false,
+            "isActive": false
         },
         {
             "id": 3,
             "nameShort": "Notification 4",
             "nameLong": "Notification 4 about something",
             "category": "Very Important",
-            "isExpanded": false
+            "isExpanded": false,
+            "isActive": true
         }
-    ]
+    ],
+    "isNewNotification": true
 }

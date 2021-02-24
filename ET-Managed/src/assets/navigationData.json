@@ -3,23 +3,28 @@
         "navigationList": [
             {
                 "name": "Overviews",
-                "iconClass": "far fa-sticky-note"
+                "iconClass": "far fa-sticky-note",
+                "isActive": "false"
             },
             {
                 "name": "Tasks",
-                "iconClass": "far fa-clipboard"
+                "iconClass": "far fa-clipboard",
+                "isActive": "false"
             },
             {
                 "name": "Budget",
-                "iconClass": "far fa-credit-card"
+                "iconClass": "far fa-credit-card",
+                "isActive": "false"
             },
             {
                 "name": "Charts",
-                "iconClass": "fas fa-chart-line"
+                "iconClass": "fas fa-chart-line",
+                "isActive": "false"
             },
             {
                 "name": "Calendar",
-                "iconClass": "far fa-calendar"
+                "iconClass": "far fa-calendar",
+                "isActive": "false"
             }
             
         ]

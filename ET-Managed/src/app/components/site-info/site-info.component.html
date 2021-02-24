@@ -5,22 +5,25 @@
         <ul class="icon-container__list">
             <li class="icon-container__item">
                 <button  class="icon-container__item__icon button" (click)="onNotificationButtonClick()">
-                    <i #notificationButton id="notificationButton" class="far fa-comment icon"></i>
+                    <i #notificationButton id="notificationButton" class="far fa-comment button_icon" [ngClass]="(notificationsList | async).isNewNotification ? 'button_icon--active' : ''"></i>
                 </button>
             </li>
             <li class="icon-container__item">
-                <button class="icon-container__item__icon button">
-                    <i class="far fa-user icon"></i>
+                <button class="icon-container__item__icon button"  (click)="onUserInfoButtonClick()">
+                    <i #userInfoButton class="far fa-user button_icon"></i>
                 </button>
             </li>
             <li class="icon-container__item">
-                <button class="icon-container__item__icon button">
-                    <i class="far fa-question-circle icon"></i>
+                <button class="icon-container__item__icon button" >
+                    <i class="far fa-question-circle button_icon"></i>
                 </button>
             </li>
         </ul>
     </div>
     <div #notificationPanel *ngIf="isNotificationButtonActive">
-        <app-notifications-container></app-notifications-container>
+        <app-notifications-container [notificationList] = "(notificationsList | async).notificationList"></app-notifications-container>
+    </div>
+    <div #userInfoPanel *ngIf="isUserInfoButtonActive">
+        <app-user-info-container></app-user-info-container>
     </div>
 </div>

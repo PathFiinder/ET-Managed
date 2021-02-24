@@ -9,7 +9,7 @@ export enum NotificationItemCategory {
 
 
 export class NotificationItem {
-    constructor(public id: number, public nameShort: string, public nameLong: string, public category: NotificationItemCategory, public isExpanded: boolean) {}
+    constructor(public id: number, public nameShort: string, public nameLong: string, public category: NotificationItemCategory, public isExpanded: boolean, public isActive: boolean) {}
 }
 
 export class NotificationList {
