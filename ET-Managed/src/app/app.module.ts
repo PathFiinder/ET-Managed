@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { NavigationEffects } from './services/stores/effects/navigation.effects';
 import { NotificationEffects } from './services/stores/effects/notification.effects';
-import { UserInformationItemComponent } from './components/site-info/user-info-container/user-information/user-information-item/user-information-item.component';
+import { UserInfoEffects } from './services/stores/effects/userInfo.effect';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +27,7 @@ import { UserInformationItemComponent } from './components/site-info/user-info-c
     NotificationsContainerComponent,
     NotificationItemComponent,
     UserInfoContainer,
-    UserInformationComponent,
-    UserInformationItemComponent
+    UserInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +38,7 @@ import { UserInformationItemComponent } from './components/site-info/user-info-c
         logOnly: environment.production
       }),
     HttpClientModule,
-    EffectsModule.forRoot([NavigationEffects, NotificationEffects])
+    EffectsModule.forRoot([NavigationEffects, NotificationEffects, UserInfoEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

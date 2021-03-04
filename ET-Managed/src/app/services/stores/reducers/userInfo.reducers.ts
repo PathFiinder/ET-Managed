@@ -15,7 +15,7 @@ const initialUserInfoList: userInfoState = {
 const reducer = createReducer(initialUserInfoList,
     on(userInfoListActions.GetUserInfoListSuccess, (state: userInfoState, {payload}) => {
         return { ...state, 
-            //userInfo:  payload.userInfo
+            userInfo:  payload.userInfo
         }
     }))
 

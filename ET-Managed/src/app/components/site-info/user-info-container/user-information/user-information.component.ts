@@ -1,9 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { SingleUser } from "src/app/components/models/userInfo.model";
+import { Component, Input, OnInit } from "@angular/core";
+import { SingleUser} from "src/app/components/models/userInfo.model";
 import { SiteInfoComponent } from "../../site-info.component";
-import * as userInfoListActions from '../../../../services/stores/actions/userInfo.actions';
 
 
 
@@ -16,18 +13,17 @@ import * as userInfoListActions from '../../../../services/stores/actions/userIn
 
     public isUserInfoActive: boolean = false;
 
-    userInfo: Observable<SingleUser> = this.store.select(state => state.userInfo)
-
-    constructor(private siteInfo: SiteInfoComponent, private store: Store<{userInfo: SingleUser}>){}
+    @Input() userInfoData?: SingleUser
+    Object = Object;
+    constructor(private siteInfo: SiteInfoComponent){}
 
     ngOnInit(): void {
       this.isUserInfoActive = true;
-      this.store.dispatch(userInfoListActions.GetUserInfoList())
+      console.log(this.userInfoData)
     }
 
     closeUserInfoButton(): void {
       this.isUserInfoActive = false;
-      
       this.siteInfo.setUserButtonToInactive();
     }
   }

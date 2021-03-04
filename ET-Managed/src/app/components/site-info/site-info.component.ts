@@ -22,9 +22,9 @@ export class SiteInfoComponent implements OnInit {
   @ViewChild('userInfoPanel') userInfoPanel: ElementRef;
 
   notificationsList: Observable<NotificationList> = 
-  this.store.select(state => state.notificationList)
+  this.notificationStore.select(state => state.notificationList)
 
-  constructor(private renderer: Renderer2, private store: Store<{notificationList: NotificationList}>) 
+  constructor(private renderer: Renderer2, private notificationStore: Store<{notificationList: NotificationList}>) 
     { 
     this.renderer.listen('window', 'click',(e:Event)=>{
     this.checkNotificationButtonStatus(e);
@@ -33,7 +33,7 @@ export class SiteInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(NotificationListActions.GetNotificationList())
+    this.notificationStore.dispatch(NotificationListActions.GetNotificationList())
   }
 
   public onNotificationButtonClick(): void {

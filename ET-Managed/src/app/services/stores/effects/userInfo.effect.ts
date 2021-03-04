@@ -14,7 +14,6 @@ export class UserInfoEffects {
       ofType(UserInfoActionType.GET_USER_INFO_DATA),
       mergeMap(() => this.storageService.getUserInfoDataJSON()
         .pipe(
-          tap(d => console.log('okd' + d)),
           map(userInfo => userInfoListActions.GetUserInfoListSuccess({payload: userInfo})),
           catchError(() => of({ type: UserInfoActionType.GET_USER_INFO_DATA_FAILURE, error: 'Error while data fetch' }))
         )
