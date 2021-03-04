@@ -1,9 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { NotificationActionType } from '../models/notification-panel-action.model';
 import { NotificationList } from '../models/notifications-list.model';
 import * as NotificationListActions from '../../services/stores/actions/notifications-list.actions';
-import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({

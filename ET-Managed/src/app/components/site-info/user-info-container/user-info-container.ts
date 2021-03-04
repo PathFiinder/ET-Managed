@@ -14,7 +14,6 @@ import { Component, OnInit } from "@angular/core";
 
     ngOnInit(): void {
       this.isUserInfoActive = true;
-      console.log(this.isUserInfoActive)
     }
 
     public onSessionInfoClick(): void {

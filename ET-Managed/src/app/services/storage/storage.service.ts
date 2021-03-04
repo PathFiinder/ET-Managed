@@ -16,4 +16,8 @@ export class StorageService {
         return this.http.get('../../../assets/notificationData.json')
     }
 
+    getUserInfoDataJSON(){
+        console.log(this.http.get('../../../assets/userInfoData.json'))
+        return this.http.get('../../../assets/userInfoData.json')
+    }
 }

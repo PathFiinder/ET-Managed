@@ -1,0 +1,9 @@
+<div class="userInfo" [ngClass]="isUserInfoActive ? 'userInfo--active' : ''">
+    <div class="userInfo__container"> 
+        <h2 class="userInfo__title">User Information</h2>
+        <div class="userInfo__content">
+            <app-user-information-item [userInfo]="(userInfo | async).userInfo"></app-user-information-item>
+        </div>
+        <button (click)="closeUserInfoButton()">Close</button>
+    </div>
+</div>

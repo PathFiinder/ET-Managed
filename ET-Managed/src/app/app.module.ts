@@ -9,7 +9,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { NotificationsContainerComponent } from './components/site-info/notifications-container/notifications-container.component';
 import { NotificationItemComponent } from './components/site-info/notifications-container/notification-item/notification-item.component';
 import { UserInfoContainer } from './components/site-info/user-info-container/user-info-container';
-import { SessionInformationComponent } from './components/site-info/user-info-container/session-information/session-information.component';
+import { UserInformationComponent } from './components/site-info/user-info-container/user-information/user-information.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {reducers} from './services/stores/index';
@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { NavigationEffects } from './services/stores/effects/navigation.effects';
 import { NotificationEffects } from './services/stores/effects/notification.effects';
+import { UserInformationItemComponent } from './components/site-info/user-info-container/user-information/user-information-item/user-information-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { NotificationEffects } from './services/stores/effects/notification.effe
     NotificationsContainerComponent,
     NotificationItemComponent,
     UserInfoContainer,
-    SessionInformationComponent
+    UserInformationComponent,
+    UserInformationItemComponent
   ],
   imports: [
     BrowserModule,

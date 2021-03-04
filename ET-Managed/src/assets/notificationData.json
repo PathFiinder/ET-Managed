@@ -29,7 +29,7 @@
             "nameShort": "Notification 4",
             "nameLong": "Notification 4 about something",
             "category": "Very Important",
-            "isExpanded": false,
+            "isExpanded": true,
             "isActive": true
         }
     ],
