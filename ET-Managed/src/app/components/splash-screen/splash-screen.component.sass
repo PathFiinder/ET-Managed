@@ -1,0 +1,60 @@
+.app-splash-screen 
+   background: white
+   position: fixed
+   top: 0
+   left: 0
+   right: 0
+   bottom: 0
+   display: flex
+   justify-content: center
+   align-items: center
+   width: 100%
+   height: 100%
+   z-index: 10
+   opacity: 1
+
+.loading-text 
+   position: relative
+   color: rgba(0, 0, 0, 0.3)
+   font-size: 12em
+   font-family: 'TheChamp'
+
+.loading-text:before 
+   content: attr(data-text)
+   position: absolute
+   overflow: hidden
+   max-width: 7em
+   white-space: nowrap
+   color: #3a36d1
+   animation: loading 7s linear
+
+@keyframes loading 
+   0% 
+      max-width: 0
+   
+
+.loading-bar
+    text-align: center
+    position: absolute
+    bottom: calc(100% / 2 - 192px /2 - 10px)
+    left: 50%
+    transform: translateX(-50%)
+    height: 18px
+    border: 1px solid #3a36d1
+    border-radius: 25px
+    width: 1153px
+    overflow: hidden
+    .loading-bar-meter
+      display: block
+      max-width: 100%
+      height: 100%
+      background-color: #3a36d1
+      animation-fill-mode: forwards
+      animation: loadingBar 6.05s linear
+
+@keyframes loadingBar 
+    0% 
+      width: 0
+    100%
+      width: 100%
+      

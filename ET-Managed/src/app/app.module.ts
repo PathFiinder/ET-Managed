@@ -18,6 +18,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { NavigationEffects } from './services/stores/effects/navigation.effects';
 import { NotificationEffects } from './services/stores/effects/notification.effects';
 import { UserInfoEffects } from './services/stores/effects/userInfo.effect';
+import { SystemInfoComponent } from './components/site-info/system-info/system-info.component';
+import { OverviewComponent } from './components/main-content/overview-content/overview.component';
+import { TasksComponent } from './components/main-content/tasks-content/tasks.component';
+import { BudgetComponent } from './components/main-content/budget-content/budget.component';
+import { ChartsComponent } from './components/main-content/charts-content/charts.component';
+import { CalendarContentComponent } from './components/main-content/calendar-content/calendar-content.component';
+import { NotFoundContentComponent } from './components/main-content/not-found-content/not-found-content.component';
+import { SplashScreenStateService } from './services/splash-screen/splash-screen-state.service';
+import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +36,15 @@ import { UserInfoEffects } from './services/stores/effects/userInfo.effect';
     NotificationsContainerComponent,
     NotificationItemComponent,
     UserInfoContainer,
-    UserInformationComponent
+    UserInformationComponent,
+    SystemInfoComponent,
+    OverviewComponent,
+    TasksComponent,
+    BudgetComponent,
+    ChartsComponent,
+    CalendarContentComponent,
+    NotFoundContentComponent,
+    SplashScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +57,7 @@ import { UserInfoEffects } from './services/stores/effects/userInfo.effect';
     HttpClientModule,
     EffectsModule.forRoot([NavigationEffects, NotificationEffects, UserInfoEffects])
   ],
-  providers: [],
+  providers: [SplashScreenStateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

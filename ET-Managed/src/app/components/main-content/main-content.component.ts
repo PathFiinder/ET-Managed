@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SplashScreenStateService } from 'src/app/services/splash-screen/splash-screen-state.service';
 
 @Component({
   selector: 'app-main-content',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private splashScreenStateService: SplashScreenStateService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.splashScreenStateService.stop();
+   }, 5500);
   }
 
 }

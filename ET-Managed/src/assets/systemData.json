@@ -1,0 +1,108 @@
+{
+    "loggedUserId": "1",
+    "users": [
+        {
+            "userId": "1",
+            "userName": "Krystian",
+            "userLastName": "Konecki",
+            "nickName": "PathFiinder",
+            "email": "krystian_konecki@wp.pl",
+            "password": "123456"
+        },
+        {
+            "userId": "2",
+            "userName": "Mateusz",
+            "userLastName": "Marzec",
+            "nickName": "MaMarzec",
+            "email": "mateusz_marzec@wp.pl",
+            "password": "654321"
+        }
+    ],
+    "applicationData": {
+        "navigationList": [
+            {
+                "name": "Overviews",
+                "iconClass": "far fa-sticky-note",
+                "isActive": "false",
+                "path": "/overview"
+            },
+            {
+                "name": "Tasks",
+                "iconClass": "far fa-clipboard",
+                "isActive": "false",
+                "path": "/tasks"
+            },
+            {
+                "name": "Budget",
+                "iconClass": "far fa-credit-card",
+                "isActive": "false",
+                "path": "/budget"
+            },
+            {
+                "name": "Charts",
+                "iconClass": "fas fa-chart-line",
+                "isActive": "false",
+                "path": "/charts"
+            },
+            {
+                "name": "Calendar",
+                "iconClass": "far fa-calendar",
+                "isActive": "false",
+                "path": "/calendar"
+            }
+            
+        ],
+        "currentUserData": {
+            "currentUserId": "1",
+            "notificationData": {
+                "notificationList": [
+                    {
+                        "id": 0,
+                        "nameShort": "Notification 1",
+                        "nameLong": "Notification 1 about something",
+                        "category": "Irrelevant",
+                        "isExpanded": true,
+                        "isActive": false
+                    },
+                    {
+                        "id": 1,
+                        "nameShort": "Notification 2",
+                        "nameLong": "Notification 2 about something",
+                        "category": "Normal",
+                        "isExpanded": false,
+                        "isActive": false
+                    },
+                    {
+                        "id": 2,
+                        "nameShort": "Notification 3",
+                        "nameLong": "Notification 3 about something",
+                        "category": "Important",
+                        "isExpanded": false,
+                        "isActive": false
+                    },
+                    {
+                        "id": 3,
+                        "nameShort": "Notification 4",
+                        "nameLong": "Notification 4 about something",
+                        "category": "Very Important",
+                        "isExpanded": true,
+                        "isActive": true
+                    }
+                ],
+                "isNewNotification": true
+            },
+            "tasksData": {
+                "tasksList": []
+            },
+            "budegtData": {
+                "budgetList": []
+            },
+            "chartsData": {
+                "chartsList": []
+            },
+            "calendarData": {
+                "calendarList": []
+            }
+        }
+    }
+}

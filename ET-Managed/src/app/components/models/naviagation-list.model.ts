@@ -15,7 +15,7 @@ export enum NavigationListItemIconClass {
 }
 
 export class NavigationItem {
-    constructor(public name: NavigationListItem, public iconClass: NavigationListItemIconClass, public isActive: boolean) {}
+    constructor(public name: NavigationListItem, public iconClass: NavigationListItemIconClass, public isActive: boolean, public path: string) {}
 }
 
 export class NavigationList {

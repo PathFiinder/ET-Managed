@@ -1,6 +1,6 @@
-@import "../../../../variables.sass"
+@import "../../../variables.sass"
 
-.userInfo
+.systemInfo
     position: absolute
     top: 0
     left: 0
@@ -8,11 +8,8 @@
     width: 100vw
     background-color: rgba(black, 30%)
     z-index: 1
-    display: none
     color: black
-    &--active
-        display: block
-    .userInfo__container
+    .systemInfo__container
         position: absolute
         top: calc(100vh / 2)
         left: 50%
@@ -29,27 +26,27 @@
             top: 0px
             left: 0px
             background-color: $site-info-color
-        .userInfo__title
+        .systemInfo__title
             margin: 10px 
-            font-weight: bolder
-            font-size: 34px
-        .userInfo__content
-            margin: 10px
-            .userInfo__list
-                height: 140px
-                display: flex
-                flex-direction: column
-                .userInfo__item
-                    list-style-type: none
-                    flex-basis: 25%
-                    .userInfo__text
-                        font-size: 20px
-                        line-height: 35px
-                        margin-left: 2px
-                        &--active
-                            display: inline
-                            font-weight: bold
-        .userInfo__borderLine
+            font-weight: bold
+            font-size: 40px
+            color: $site-info-color
+        .systemInfo__author
+            margin: 20px 10px 10px 10px
+            font-size: 24px
+            font-weight: normal
+            &--bold
+                display: inline
+                font-weight: bold
+        .systemInfo__version
+            margin: 15px 10px 10px 10px
+            font-size: 24px
+        .systemInfo__rights
+            position: absolute
+            left: 10px
+            bottom: 58px
+            font-size: 20px
+        .systemInfo__borderLine
             position: absolute
             bottom: 55px
             left: 0
@@ -58,7 +55,7 @@
             background-color: $navigation-color
             margin: 0 5px
             text-align: center
-        .userInfo__button
+        .systemInfo__button
             position: absolute
             bottom: 10px
             right: 10px

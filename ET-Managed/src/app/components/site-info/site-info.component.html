@@ -14,8 +14,8 @@
                 </button>
             </li>
             <li class="icon-container__item">
-                <button class="icon-container__item__icon button" >
-                    <i class="far fa-question-circle button_icon"></i>
+                <button class="icon-container__item__icon button" (click)="onSystemInfoButtonClick()">
+                    <i #systemInfoButton class="far fa-question-circle button_icon"></i>
                 </button>
             </li>
         </ul>
@@ -25,5 +25,8 @@
     </div>
     <div #userInfoPanel *ngIf="isUserInfoButtonActive">
         <app-user-info-container></app-user-info-container>
+    </div>
+    <div #systemInfoPanel *ngIf="isSystemInfoButtonActive">
+        <app-system-info></app-system-info>
     </div>
 </div>

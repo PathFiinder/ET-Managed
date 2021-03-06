@@ -4,27 +4,32 @@
             {
                 "name": "Overviews",
                 "iconClass": "far fa-sticky-note",
-                "isActive": "false"
+                "isActive": "false",
+                "path": "/overview"
             },
             {
                 "name": "Tasks",
                 "iconClass": "far fa-clipboard",
-                "isActive": "false"
+                "isActive": "false",
+                "path": "/tasks"
             },
             {
                 "name": "Budget",
                 "iconClass": "far fa-credit-card",
-                "isActive": "false"
+                "isActive": "false",
+                "path": "/budget"
             },
             {
                 "name": "Charts",
                 "iconClass": "fas fa-chart-line",
-                "isActive": "false"
+                "isActive": "false",
+                "path": "/charts"
             },
             {
                 "name": "Calendar",
                 "iconClass": "far fa-calendar",
-                "isActive": "false"
+                "isActive": "false",
+                "path": "/calendar"
             }
             
         ]

@@ -2,8 +2,6 @@ import { Component, Input, OnInit } from "@angular/core";
 import { SingleUser} from "src/app/components/models/userInfo.model";
 import { SiteInfoComponent } from "../../site-info.component";
 
-
-
 @Component({
     selector: 'app-user-information',
     templateUrl: './user-information.component.html',

@@ -15,11 +15,16 @@ export class SiteInfoComponent implements OnInit {
   public isNotificationContainerEmpty: boolean = true;
 
   public isUserInfoButtonActive: boolean = false;
+  public isSystemInfoButtonActive: boolean = false;
 
   @ViewChild('notificationButton') notificationButton: ElementRef;
   @ViewChild('notificationPanel') notificationPanel: ElementRef;
+  
   @ViewChild('userInfoButton') userInfoButton: ElementRef;
   @ViewChild('userInfoPanel') userInfoPanel: ElementRef;
+
+  @ViewChild('systemInfoButton') systemInfoButton: ElementRef;
+  @ViewChild('systemInfoPanel') systemInfoPanel: ElementRef;
 
   notificationsList: Observable<NotificationList> = 
   this.notificationStore.select(state => state.notificationList)
@@ -29,6 +34,7 @@ export class SiteInfoComponent implements OnInit {
     this.renderer.listen('window', 'click',(e:Event)=>{
     this.checkNotificationButtonStatus(e);
     this.checkUserInfoButtonStatus(e);
+    this.checkSystemInfoButtonStatus(e);
     })
   }
 
@@ -44,10 +50,18 @@ export class SiteInfoComponent implements OnInit {
     this.isUserInfoButtonActive = !this.isUserInfoButtonActive;
   }
 
+  public onSystemInfoButtonClick(): void {
+    this.isSystemInfoButtonActive = !this.isSystemInfoButtonActive;
+  }
 
   public setUserButtonToInactive(): void {
     this.isUserInfoButtonActive = false;
   } 
+
+  public setSystemuttonToInactive(): void {
+    this.isSystemInfoButtonActive = false;
+  } 
+
   private setNotificationButtonActiveToFalse() {
     this.isNotificationButtonActive = false;
   }
@@ -99,10 +113,30 @@ export class SiteInfoComponent implements OnInit {
     }
   }
 
+  private checkSystemInfoButtonStatus(e: Event) {
+    if (this.isSystemInfoButtonActive) {
+      this.checkIfSystemnInfoButtonOrPanelIsActive(e);
+    } 
+    else {
+      this.checkIfSystemInfoButtonIsActive(e);
+    }
+  }
 
+  private checkIfSystemnInfoButtonOrPanelIsActive(e: Event) {
+    if (!this.systemInfoButton.nativeElement.contains(e.target) && !this.systemInfoPanel.nativeElement.contains(e.target)) {
+      this.setSystemInfoButtonActiveToFalse();
+    }
+  }
 
+  private setSystemInfoButtonActiveToFalse() {
+    this.isSystemInfoButtonActive = false;
+  }
 
-
+  private checkIfSystemInfoButtonIsActive(e: Event) {
+    if (!this.systemInfoButton.nativeElement.contains(e.target)) {
+      this.setSystemInfoButtonActiveToFalse();
+    }
+  }
 
 
 
