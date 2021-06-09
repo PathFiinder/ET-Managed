@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { SingleUser } from "../../models/userInfo.model";
-import * as userInfoListActions from '../../../services/stores/actions/userInfo.actions';
+import { selectCurrentUser } from '../../../services/stores/selectors/system-data.selector';
+import { LoggedUser } from "src/app/services/stores/types/systemData.model";
 @Component({
     selector: 'app-user-info-container',
     templateUrl: './user-info-container.html',
@@ -13,15 +13,11 @@ import * as userInfoListActions from '../../../services/stores/actions/userInfo.
     public isSessionInformationActive: boolean = false;
     public isUserInfoActive: boolean = false;
 
-
-    
-    userInfo: Observable<SingleUser> = this.store.select(state => state.userInfo)
-
-    constructor(private store: Store<{userInfo: SingleUser}>){}
+    userInfo: Observable<LoggedUser> = this.store.select(selectCurrentUser)
+    constructor(private store: Store){}
 
     ngOnInit(): void {
       this.isUserInfoActive = true;
-      this.store.dispatch(userInfoListActions.GetUserInfoList())
     }
 
     public onSessionInfoClick(): void {

@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { NotificationList } from '../models/notifications-list.model';
-import * as NotificationListActions from '../../services/stores/actions/notifications-list.actions';
 import { Observable } from 'rxjs';
+import { selectIsNewNotification, selectNotificationList } from 'src/app/services/stores/selectors/system-data.selector';
+import { NotificationItem } from 'src/app/services/stores/types/systemData.model';
 
 @Component({
   selector: 'app-site-info',
@@ -26,10 +26,10 @@ export class SiteInfoComponent implements OnInit {
   @ViewChild('systemInfoButton') systemInfoButton: ElementRef;
   @ViewChild('systemInfoPanel') systemInfoPanel: ElementRef;
 
-  notificationsList: Observable<NotificationList> = 
-  this.notificationStore.select(state => state.notificationList)
-
-  constructor(private renderer: Renderer2, private notificationStore: Store<{notificationList: NotificationList}>) 
+  notificationsList: Observable<NotificationItem[]> = this.store.select(selectNotificationList)
+  isNewNotification: Observable<boolean> = this.store.select(selectIsNewNotification)
+  constructor(private renderer: Renderer2, private store: Store
+    ) 
     { 
     this.renderer.listen('window', 'click',(e:Event)=>{
     this.checkNotificationButtonStatus(e);
@@ -39,7 +39,6 @@ export class SiteInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.notificationStore.dispatch(NotificationListActions.GetNotificationList())
   }
 
   public onNotificationButtonClick(): void {

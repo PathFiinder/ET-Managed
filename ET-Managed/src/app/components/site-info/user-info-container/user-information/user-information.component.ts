@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { SingleUser} from "src/app/components/models/userInfo.model";
+import { LoggedUser } from "src/app/services/stores/types/systemData.model";
 import { SiteInfoComponent } from "../../site-info.component";
 
 @Component({
@@ -11,13 +11,12 @@ import { SiteInfoComponent } from "../../site-info.component";
 
     public isUserInfoActive: boolean = false;
 
-    @Input() userInfoData?: SingleUser
+    @Input() userInfoData?: LoggedUser
     Object = Object;
     constructor(private siteInfo: SiteInfoComponent){}
 
     ngOnInit(): void {
       this.isUserInfoActive = true;
-      console.log(this.userInfoData)
     }
 
     closeUserInfoButton(): void {

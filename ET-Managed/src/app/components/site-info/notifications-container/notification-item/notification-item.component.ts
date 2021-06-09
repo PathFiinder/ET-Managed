@@ -1,9 +1,9 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NotificationItemPriority } from 'src/app/components/models/notification-item-priority.model';
-import { NotificationActionType } from 'src/app/components/models/notification-panel-action.model';
-import { NotificationItem, NotificationItemCategory, NotificationList } from '../../../models/notifications-list.model';
-import * as NotificationListActions from '../../../../services/stores/actions/notifications-list.actions';
+import { deleteNotificationItemById, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from 'src/app/services/stores/actions/system-data.actions';
+import { NotificationItem, NotificationItemCategory } from 'src/app/services/stores/types/systemData.model';
+
 
 @Component({
   selector: 'app-notification-item',
@@ -20,22 +20,22 @@ export class NotificationItemComponent implements OnInit {
     [NotificationItemCategory.VERY_IMPORTANT, () => this.getVeryImportantPriority()]
   ])
 
-  constructor( private store: Store<{notificationList: NotificationList}>) { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }
 
   public changeNotificationItemToActive(notificationItemId: number, notificationItemIsActive: boolean, event: Event): void {
     if(notificationItemIsActive) {
-    this.store.dispatch(NotificationListActions.UpdateNotificationItemIsActive({payload: notificationItemId}))
+      this.store.dispatch(updateNotificationItemIsActiveById({notificationItemId: notificationItemId}))
     }
     event.stopPropagation();
   }
 
   public onExpandOrDropButtonClick(notificationItemId: number, notificationItemIsActive: boolean, event: Event): void {
-    this.store.dispatch(NotificationListActions.UpdateNotificationItem({payload: notificationItemId}));
+    this.store.dispatch(updateNotificationItemIsExpandedById({notificationItemId: notificationItemId}));
     if(notificationItemIsActive) {
-      this.store.dispatch(NotificationListActions.UpdateNotificationItemIsActive({payload: notificationItemId}))
+      this.store.dispatch(updateNotificationItemIsActiveById({notificationItemId: notificationItemId}))
     }
     event.stopPropagation();
   }
@@ -45,9 +45,9 @@ export class NotificationItemComponent implements OnInit {
   }
 
   public onBinIconButtonChange(notificationItemId: number, notificationItemIsActive: boolean, event: Event): void {
-    this.store.dispatch(NotificationListActions.DeleteNotification({payload: notificationItemId}));
+    this.store.dispatch(deleteNotificationItemById({notificationItemId: notificationItemId}));
     if(notificationItemIsActive) {
-    this.store.dispatch(NotificationListActions.UpdateNotificationIsNew())
+      this.store.dispatch(updateNotificationIsNew())
     }
     event.stopPropagation();
   }

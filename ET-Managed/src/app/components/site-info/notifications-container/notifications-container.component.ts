@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { NotificationItem, NotificationItemCategory, NotificationList } from '../../models/notifications-list.model';
-import * as NotificationListActions from '../../../services/stores/actions/notifications-list.actions';
-import { Observable } from 'rxjs';
-import { SiteInfoComponent } from '../site-info.component';
+import {deleteAllNotifications, hidePopupsOnNotificationList, updateNotificationIsNew} from 'src/app/services/stores/actions/system-data.actions'
+import { NotificationItem } from 'src/app/services/stores/types/systemData.model';
 @Component({
   selector: 'app-notifications-container',
   templateUrl: './notifications-container.component.html',
@@ -15,9 +13,7 @@ export class NotificationsContainerComponent implements OnInit, OnDestroy {
   public numberOfActiveNotifications: number = 0;
   public isEmptyNotificationContainer: boolean = true;
 
-  constructor(
-    private store: Store<{notificationList: NotificationList}>
-  ) {}
+  constructor(private store: Store) {}
 
   ngOnDestroy(): void {
   }
@@ -26,12 +22,12 @@ export class NotificationsContainerComponent implements OnInit, OnDestroy {
   }
 
   public onHidePopupsButtonClick(): void {
-    this.store.dispatch(NotificationListActions.HidePopupsOnNotificationList());
+    this.store.dispatch(hidePopupsOnNotificationList())
   }
 
   public onClearButtonClick(): void {
-    this.store.dispatch(NotificationListActions.DeleteAllNotifications());
-    this.store.dispatch(NotificationListActions.UpdateNotificationIsNew());
+    this.store.dispatch(deleteAllNotifications());
+    this.store.dispatch(updateNotificationIsNew());
   }
 
 

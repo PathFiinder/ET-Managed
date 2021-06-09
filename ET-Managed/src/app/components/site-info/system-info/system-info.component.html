@@ -1,9 +1,10 @@
 <div class="systemInfo">
     <div class="systemInfo__container"> 
-        <h2 class="systemInfo__title">ET MANAGED</h2>
-        <h3 class="systemInfo__author">Author: <p class="systemInfo__author--bold">Krystian Konecki</p></h3>
-        <p class="systemInfo__version">App version: 1.0.0</p>
-        <p class="systemInfo__rights">@2021 All rights reserved</p>
+        <h2 class="systemInfo__title">{{systemInfoData.title}}</h2>
+        <h3 class="systemInfo__author">Author: <p class="systemInfo__author--bold">{{systemInfoData.author}}</p></h3>
+        <h4 class="systemInfo__version">App version: <p class="systemInfo__author--bold">{{systemInfoData.version}}</p></h4>
+        <h4 class="systemInfo__lastUpdate">Last update: <p class="systemInfo__author--bold">{{systemInfoData.lastUpdate}}</p> </h4>
+        <p class="systemInfo__rights">{{systemInfoData.copyrights}}</p>
         <div class="systemInfo__borderLine"></div>
         <button class="systemInfo__button" (click)="closeSystemInfoButton()">Close</button>
     </div>

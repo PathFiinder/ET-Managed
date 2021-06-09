@@ -7,16 +7,8 @@ import { Injectable } from "@angular/core";
 
 export class StorageService {
     constructor(private http: HttpClient) {}
-
-    getNavigationDataJSON(){
-        return this.http.get('../../../assets/navigationData.json')
-    }
-
-    getNotificationDataJSON(){
-        return this.http.get('../../../assets/notificationData.json')
-    }
-
-    getUserInfoDataJSON(){
-        return this.http.get('../../../assets/userInfoData.json')
+    
+    getSystemDataJSON(){
+        return this.http.get('../../../assets/systemData.json')
     }
 }
