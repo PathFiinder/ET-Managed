@@ -29,6 +29,11 @@ export const selectSystemInfo = createSelector<any, models.ApplicationData, mode
     (applicationData: models.ApplicationData) => applicationData.systemInfo
 )
 
+export const selectIsMenuExpanded = createSelector<any, models.ApplicationData, boolean>(
+    selectApplicationData,
+    (applicationData: models.ApplicationData) => applicationData.menuExpanded
+)
+
 export const selectNavigationItemByName = createSelector<any, string, models.NavigationItem[], models.NavigationItem> (
     selectNavigationList,
     (navigationItems: models.NavigationItem[], itemName: string) =>  navigationItems.find(item => item.name === itemName)

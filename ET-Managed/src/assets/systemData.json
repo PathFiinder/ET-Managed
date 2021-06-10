@@ -4,15 +4,16 @@
             "userName": "Krystian",
             "userLastName": "Konecki",
             "nickName": "PathFiinder",
+            "avatarId": 1,
             "email": "krystian_konecki@wp.pl"
         },
     "applicationData": {
         "navigationList": [
             {
-                "name": "Overviews",
+                "name": "Dashboard",
                 "iconClass": "far fa-sticky-note",
-                "isActive": "false",
-                "path": "/overview"
+                "isActive": "true",
+                "path": "/dashboard"
             },
             {
                 "name": "Tasks",
@@ -27,10 +28,10 @@
                 "path": "/budget"
             },
             {
-                "name": "Charts",
+                "name": "Reports",
                 "iconClass": "fas fa-chart-line",
                 "isActive": "false",
-                "path": "/charts"
+                "path": "/reports"
             },
             {
                 "name": "Calendar",
@@ -45,7 +46,8 @@
             "version": "1.0.0",
             "lastUpdate": "June 2021",
             "copyrights": "@2021 All rights reserved"
-        }
+        },
+        "menuExpanded": true
     },
     "userData": {
         "notificationData": {

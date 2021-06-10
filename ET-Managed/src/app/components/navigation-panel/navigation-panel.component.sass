@@ -1,35 +1,67 @@
 @import "../..//variables.sass"
 
-.navigation-panel
+.navigation-panel_container
     height: 250px
-    cursor: pointer
-    .navigation-panel__list
-        list-style-type: none
-        display: flex
-        flex-direction: column
-        justify-content: center
-        height: 100%
+    // cursor: pointer
+    position: relative
+    .navigation-panel--cut
+        width: 0
+        height: 0
+        border-top: 10px solid transparent
+        border-bottom: 10px solid transparent
+        border-right: 10px solid white
+        position: absolute
+        top: 15px
+        right: 0
+    .navigation-panel__user-container, .user-container
+        width: 100%
+        height: 80px
+        margin-top: 20px
         position: relative
-        .navigation-panel__list__item
-            flex-basis: calc(100% / 5)
-            font-size: 22px
-            letter-spacing: 2px
-            text-transform: uppercase
-            position: relative
-            border-bottom: 1px solid $border-color
-            &:hover
-                background-color: $navigation-color
-            .navigation-panel__list__content, .list-content
-                display: flex
-                flex-direction: row
-                position: absolute
-                top: 50%
-                left: 10px
-                transform: translateY(-50%)
-                .list-content__icon
-                    font-size: 30px
-                    width: 30px
-                    text-align: center
-                    margin-right: 20px
-                .list-content__name
-                    font-weight: normal
+        &--inactive
+            display: none
+        .user-container__avatar
+            height: 70px
+            width: 70px
+            margin-top: 5px
+            margin-left: 20px
+            border: 1px solid black
+        .user-container__username
+            font-size: 16px
+            color: white
+            width: 80px
+            position: absolute
+            top: 10px
+            left: 95px
+            font-weight: bold
+
+    // .navigation-panel__list
+    //     list-style-type: none
+    //     display: flex
+    //     flex-direction: column
+    //     justify-content: center
+    //     height: 100%
+    //     position: relative
+    //     .navigation-panel__list__item
+    //         flex-basis: calc(100% / 5)
+    //         font-size: 16px
+    //         letter-spacing: 2px
+    //         text-transform: uppercase
+    //         position: relative
+    //         border-bottom: 1px solid $border-color
+    //         &:hover
+    //             background-color: $navigation-color
+    //         .navigation-panel__list__content, .list-content
+    //             display: flex
+    //             flex-direction: row
+    //             position: absolute
+    //             top: 50%
+    //             left: 10px
+    //             transform: translateY(-50%)
+    //             .list-content__icon
+    //                 font-size: 30px
+    //                 width: 30px
+    //                 text-align: center
+    //                 margin-right: 20px
+    //             .list-content__name
+    //                 font-weight: normal

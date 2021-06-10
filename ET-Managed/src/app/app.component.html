@@ -2,15 +2,15 @@
 <app-splash-screen></app-splash-screen>
 
 <div class="main">
-  <header class="site-info">
-    <app-site-info></app-site-info>
-  </header>
-  <div class="content">
-    <nav class="navigation-panel">
-      <app-navigation-panel></app-navigation-panel>
-    </nav>
-    <div class="main-content">
-      <app-main-content></app-main-content>
+  <nav class="navigation-panel {{(isNavigationPanelExpanded | async) ? '' : 'navigation-panel--collapsed'}}">
+    <app-navigation-panel></app-navigation-panel>
+  </nav>
+  <div class="main-container">
+    <div class="navigation-container">
+      <app-navigation-container></app-navigation-container>
+    </div>
+    <div class="content">
+        <app-main-content></app-main-content>
     </div>
   </div>
 </div>

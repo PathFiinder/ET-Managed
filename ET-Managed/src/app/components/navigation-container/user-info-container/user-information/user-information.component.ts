@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { LoggedUser } from "src/app/services/stores/types/systemData.model";
-import { SiteInfoComponent } from "../../site-info.component";
+import { NavigationContainerComponent } from "../../navigation-container.component";
 
 @Component({
     selector: 'app-user-information',
@@ -13,7 +13,7 @@ import { SiteInfoComponent } from "../../site-info.component";
 
     @Input() userInfoData?: LoggedUser
     Object = Object;
-    constructor(private siteInfo: SiteInfoComponent){}
+    constructor(private siteInfo: NavigationContainerComponent){}
 
     ngOnInit(): void {
       this.isUserInfoActive = true;

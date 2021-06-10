@@ -1,4 +1,4 @@
-<div class="systemInfo">
+<div class="systemInfo" [ngStyle]="{'width': (isExpanded | async) ? 'calc(100vw - 200px)' : 'calc(100vw - 90px)'}">
     <div class="systemInfo__container"> 
         <h2 class="systemInfo__title">{{systemInfoData.title}}</h2>
         <h3 class="systemInfo__author">Author: <p class="systemInfo__author--bold">{{systemInfoData.author}}</p></h3>

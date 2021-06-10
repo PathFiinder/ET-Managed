@@ -1,0 +1,41 @@
+<div class="navigation-container navigation">
+    <button class="navigation__collapseButton" (click)="changeExpandValue()">
+        <i class="fas {{(isExpanded | async) ? 'fa-compress-arrows-alt' : 'fa-expand-arrows-alt'}} navigation__collapseButton--icon"></i>
+        <p class="navigation__collapseButton--text">{{(isExpanded | async) ? 'Collapse' : 'Expand'}}</p>
+    </button>
+    <h3 class="navigation__quotation">"The best time to act is now!"</h3>
+    <div class="navigation__icon-container icon-container">
+        <ul class="icon-container__list">
+            <li class="icon-container__item icon-container__item--time">
+               <p class="icon-container_time_item"><span class="icon-container_time_item--bold">{{dateTimeHour}}:{{dateTimeMinutes}}</span> {{dateTimeHour == 0 || dateTimeHour < 12 ? 'AM' : 'PM'}}</p>
+            </li>
+            <li class="icon-container__item icon-container__item--time">
+                <p class="icon-container_time_item"><span class="icon-container_time_item--bold">{{fullDate}}</span></p>
+            </li>
+            <li class="icon-container__item icon-container__item--icon">
+                <button  class="icon-container__item__icon button" (click)="onNotificationButtonClick()">
+                    <i #notificationButton id="notificationButton" class="far fa-bell button_icon" [ngClass]="(isNewNotification | async) ? 'button_icon--active' : ''"></i> 
+                </button>
+            </li>
+            <li class="icon-container__item icon-container__item--icon">
+                <button class="icon-container__item__icon button"  (click)="onUserInfoButtonClick()">
+                    <i #userInfoButton class="far fa-user button_icon"></i>
+                </button>
+            </li>
+            <li class="icon-container__item icon-container__item--icon">
+                <button class="icon-container__item__icon button" (click)="onSystemInfoButtonClick()">
+                    <i #systemInfoButton class="far fa-question-circle button_icon"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div #notificationPanel *ngIf="isNotificationButtonActive">
+        <app-notifications-container [notificationList] = "(notificationsList | async)"></app-notifications-container>
+    </div>
+    <div #userInfoPanel *ngIf="isUserInfoButtonActive">
+        <app-user-info-container></app-user-info-container>
+    </div>
+    <div #systemInfoPanel *ngIf="isSystemInfoButtonActive">
+        <app-system-info></app-system-info>
+    </div>
+</div>

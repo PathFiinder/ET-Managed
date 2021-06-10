@@ -1,0 +1,85 @@
+@import "../..//variables.sass"
+
+.navigation-container, .navigation
+    background-color: #FFFFFF
+    display: flex
+    height: 100%
+    flex-direction: row
+    align-items: center
+    position: relative
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1)
+    .navigation__collapseButton
+        height: 100%
+        width: 120px
+        border: none
+        border-right: 1px solid rgba(0,0,0, 0.2)
+        background-color: transparent
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+        cursor: pointer
+        .navigation__collapseButton--icon
+            flex-basis: 35%
+            font-size: 24px
+            color: rgba(0,0,0, 0.5)
+        .navigation__collapseButton--text
+            flex-basis: 65%
+            font-size: 16px
+            color: rgba(0,0,0, 0.5)
+    .navigation__quotation
+        flex-grow: 1
+        font-family: 'Lemonada', cursive
+        font-weight: 300
+        text-align: center
+    .navigation__icon-container, .icon-container
+        flex-basis: 400px
+        height: 100%
+        .icon-container__list
+            display: flex
+            flex-direction: row
+            list-style-type: none
+            height: 100%
+            .icon-container__item
+                border-left: 1px solid rgba(0,0,0, 0.2)
+                height: 100%
+                width: calc(100% - 8px)
+                z-index: 1
+                position: relative
+                &--icon
+                    flex-basis: 60px
+                &--time
+                    flex-basis: 110px
+                .icon-container_time_item
+                    border: none
+                    width: 100%
+                    position: absolute
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    text-align: center
+                    color: rgba(0,0,0, 0.5)
+                    background-color: transparent
+                    &--bold
+                        font-weight: bold
+                        color: rgba(0,0,0, 1)
+                .icon-container__item__icon
+                    border: none
+                    height: 100%
+                    width: 100%
+                    color: rgba(0,0,0, 0.5)
+                    background-color: transparent
+                    cursor: pointer
+                    position: relative
+                    &:hover
+                        background-color: rgba(0,0,0, 0.1)
+                        color: rgba(0,0,0, 0.8)
+                    .button_icon
+                        font-size: 26px
+                        height: 100%
+                        width: 100%
+                        margin-top: 10.5px
+                        &--active
+                            color: red
+                            
+    

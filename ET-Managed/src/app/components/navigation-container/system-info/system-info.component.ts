@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectSystemInfo } from 'src/app/services/stores/selectors/system-data.selector';
+import { Observable } from 'rxjs';
+import { selectIsMenuExpanded, selectSystemInfo } from 'src/app/services/stores/selectors/system-data.selector';
 import { SystemInfo } from 'src/app/services/stores/types/systemData.model';
-import { SiteInfoComponent } from '../site-info.component';
+import { NavigationContainerComponent } from '../navigation-container.component';
 
 @Component({
   selector: 'app-system-info',
@@ -12,14 +13,15 @@ import { SiteInfoComponent } from '../site-info.component';
 export class SystemInfoComponent implements OnInit {
 
   systemInfoData: SystemInfo;
+  public isExpanded: Observable<boolean> = this.store.select(selectIsMenuExpanded)
 
-  constructor(private siteInfo: SiteInfoComponent, private store: Store) { }
+  constructor(public navigationContainer: NavigationContainerComponent, private store: Store) { }
 
   ngOnInit(): void {
     this.store.select(selectSystemInfo).subscribe((systemInfo: SystemInfo) => this.systemInfoData = systemInfo)
   }
 
   closeSystemInfoButton(): void {
-    this.siteInfo.setSystemuttonToInactive();
+    this.navigationContainer.setSystemuttonToInactive();
   }
 }

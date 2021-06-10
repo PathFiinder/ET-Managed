@@ -1,17 +1,16 @@
 @import "../../../variables.sass"
 
-.notification-container
+.navigation-container__notification-container, .notification-container
         height: 250px
         width: 400px
         background-color: $base-color
-        border-right: 1px solid black
-        border-bottom: 1px solid black
-        border-left: 1px solid black
+        border: 1px solid black
         position: absolute
         top: 100%
-        right: calc(60px + 60px + 50px)
+        right: calc(60px + 60px + 60px)
         box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%)
         color: black
+        z-index: 100
         .notification-container__nav
             display: flex
             flex-direction: row

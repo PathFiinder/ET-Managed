@@ -10,12 +10,14 @@ export interface LoggedUser {
     userName: string,
     userLastName: string,
     nickName: string,
+    avatarId: number,
     email: string
 }
 
 export interface ApplicationData {
     navigationList: NavigationItem[],
-    systemInfo: SystemInfo
+    systemInfo: SystemInfo,
+    menuExpanded: boolean
 }
 
 export interface NavigationItem {

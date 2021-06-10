@@ -4,23 +4,26 @@
     min-width: 1280px
     min-width: 800px
     height: 100vh
-    overflow: hidden
     background-color: $base-color
     display: flex
-    flex-direction: column
-    .site-info
-        background-color: $site-info-color
-        flex-basis: 50px
-    .content
+    flex-direction: row
+    .navigation-panel
+        height: 100%
+        flex-basis: 200px
+        background-color: #252D3A
+        &--collapsed
+            flex-basis: 60px
+            background-color: #252D3A
+    .main-container
         flex-grow: 1
-        background-color: $base-color
+        height: 100%
         display: flex
-        flex-direction: row
-        .navigation-panel
-            background-color: $base-color
-            flex-basis: 240px
-            border-right: 1px solid $border-color
-        .main-content
+        flex-direction: column
+        .navigation-container
+            background-color: $site-info-color
+            flex-basis: 50px
+        .content
             flex-grow: 1
-            padding-left: 10px
             background-color: $base-color
+            padding-left: 10px
+            padding-top: 10px

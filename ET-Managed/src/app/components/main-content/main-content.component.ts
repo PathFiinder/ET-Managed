@@ -13,7 +13,7 @@ export class MainContentComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.splashScreenStateService.stop();
-   }, 5500);
+   }, 3000);
   }
 
 }

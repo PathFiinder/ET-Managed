@@ -1,21 +1,29 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectIsNewNotification, selectNotificationList } from 'src/app/services/stores/selectors/system-data.selector';
+import { AppComponent } from 'src/app/app.component';
+import { changeIsMenuExpanded } from 'src/app/services/stores/actions/system-data.actions';
+import { selectIsNewNotification, selectNotificationList, selectIsMenuExpanded } from 'src/app/services/stores/selectors/system-data.selector';
 import { NotificationItem } from 'src/app/services/stores/types/systemData.model';
 
 @Component({
-  selector: 'app-site-info',
-  templateUrl: './site-info.component.html',
-  styleUrls: ['./site-info.component.sass']
+  selector: 'app-navigation-container',
+  templateUrl: './navigation-container.component.html',
+  styleUrls: ['./navigation-container.component.sass']
 })
-export class SiteInfoComponent implements OnInit {
+export class NavigationContainerComponent implements OnInit {
 
   public isNotificationButtonActive: boolean = false;
   public isNotificationContainerEmpty: boolean = true;
 
   public isUserInfoButtonActive: boolean = false;
   public isSystemInfoButtonActive: boolean = false;
+
+  public dateTimeHour: number;
+  public dateTimeMinutes: number;
+  public fullDate: string;
+
+  public isExpanded: Observable<boolean> = this.store.select(selectIsMenuExpanded)
 
   @ViewChild('notificationButton') notificationButton: ElementRef;
   @ViewChild('notificationPanel') notificationPanel: ElementRef;
@@ -28,7 +36,8 @@ export class SiteInfoComponent implements OnInit {
 
   notificationsList: Observable<NotificationItem[]> = this.store.select(selectNotificationList)
   isNewNotification: Observable<boolean> = this.store.select(selectIsNewNotification)
-  constructor(private renderer: Renderer2, private store: Store
+
+  constructor(private renderer: Renderer2, private store: Store, private appData: AppComponent
     ) 
     { 
     this.renderer.listen('window', 'click',(e:Event)=>{
@@ -39,7 +48,23 @@ export class SiteInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getDataTime();
+    const time = setInterval(() => this.getDataTime(),1000);
   }
+
+  public changeExpandValue(): void {
+    this.store.dispatch(changeIsMenuExpanded());
+  }
+
+  public getDataTime(): void {
+    const date = new Date();
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];;
+    this.dateTimeHour = date.getHours();
+    this.dateTimeMinutes = date.getMinutes();
+    this.fullDate = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
+    
+  }
+  
 
   public onNotificationButtonClick(): void {
     this.isNotificationButtonActive = !this.isNotificationButtonActive;
@@ -85,7 +110,6 @@ export class SiteInfoComponent implements OnInit {
       this.checkIfNotificationButtonIsActive(e);
     }
   }
-
 
   private setUserInfoButtonActiveToFalse() {
     this.isUserInfoButtonActive = false;

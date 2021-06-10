@@ -1,12 +1,13 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { deleteAllNotifications, deleteNotificationItemById, getSystemDataSuccess, hidePopupsOnNotificationList, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from '../actions/system-data.actions';
+import { changeIsMenuExpanded, deleteAllNotifications, deleteNotificationItemById, getSystemDataSuccess, hidePopupsOnNotificationList, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from '../actions/system-data.actions';
 import { NotificationItem, SystemData } from '../types/systemData.model';
 
 export const initialState: SystemData = {
    loggedUser: null,
    applicationData: {
     navigationList: [], 
-    systemInfo: null
+    systemInfo: null,
+    menuExpanded: null
    },
    userData: {
     notificationData: {
@@ -36,7 +37,8 @@ export const initialState: SystemData = {
               loggedUser: payload.user,
               applicationData: {
                   navigationList: payload.applicationData.navigationList,
-                  systemInfo: payload.applicationData.systemInfo
+                  systemInfo: payload.applicationData.systemInfo,
+                  menuExpanded: payload.applicationData.menuExpanded
               },
               userData: payload.userData
           }
@@ -58,6 +60,15 @@ export const initialState: SystemData = {
                         })],
                     isNewNotification: false
                 }
+            }
+        }
+    }),
+    on(changeIsMenuExpanded, (state: SystemData) => { 
+        return {
+            ...state,
+            applicationData: {
+                ...state.applicationData,
+                menuExpanded: !state.applicationData.menuExpanded
             }
         }
     }),
