@@ -1,15 +1,17 @@
 <div class="navigation-panel_container navigation-panel">
     <span class="navigation-panel--cut"></span>
     <div class="navigation-panel__user-container user-container" [ngClass]="(isExpanded | async) ? '' : 'user-container--inactive'">
-        <img class="user-container__avatar" src="../../../assets/img/unnamed.png" alt="Avatar image">
+        <img class="user-container__avatar" [src]="getAvatarItemById((avatar | async), (userInfo | async)?.avatarId)" alt="Avatar image">
+        
         <p class="user-container__username">{{(userInfo | async)?.nickName}}</p>
     </div>
-    <!-- <ul class="navigation-panel__list">
-        <li  class="navigation-panel__list__item" *ngFor="let item of (listItems | async)" routerLink="{{item.path}}">
-            <div class="navigation-panel__list__content list-content">
-                <i class="{{item.iconClass}} list-content__icon"></i>
-                <h3 class="list-content__name">{{item.name}}</h3>
+    <ul class="navigation-panel__list" [ngClass]="(isExpanded | async) ? '' : 'navigation-panel__list--collapsed'">
+        <li  class="navigation-panel__list__item" *ngFor="let item of (listItems | async); index as i" [ngClass]="item?.isActive ? 'navigation-panel__list__item--active' : ''">
+            <div class="navigation-panel__list__content list-content" [ngClass]="(isExpanded | async) ? '' : 'list-content--collapsed'">
+                <i class="{{item.iconClass}} list-content__icon" [ngClass]="(isExpanded | async) ? '' : 'list-content__icon--collapsed'"></i>
+                <h3 class="list-content__name" [ngClass]="(isExpanded | async) ? '' : 'list-content__name--collapsed'">{{item.name}}</h3>
+                <span class="list-content--span" (click)="onButtonClick($event)" id="item-{{i}}" routerLink="{{item.path}}"></span>
             </div>
         </li>
-    </ul> -->
+    </ul>
 </div>

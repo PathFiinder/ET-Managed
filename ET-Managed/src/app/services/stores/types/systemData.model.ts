@@ -17,13 +17,19 @@ export interface LoggedUser {
 export interface ApplicationData {
     navigationList: NavigationItem[],
     systemInfo: SystemInfo,
-    menuExpanded: boolean
+    menuExpanded: boolean,
+    avatarList: AvatarItem[]
 }
 
+export interface AvatarItem {
+    avatarId: number,
+    imgSource: string
+}
 export interface NavigationItem {
+    id: number,
     name: string,
     iconClass: string,
-    isActive: string,
+    isActive: boolean,
     path: string
 }
 

@@ -10,33 +10,38 @@
     "applicationData": {
         "navigationList": [
             {
+                "id": 0,
                 "name": "Dashboard",
-                "iconClass": "far fa-sticky-note",
-                "isActive": "true",
+                "iconClass": "fas fa-home",
+                "isActive": true,
                 "path": "/dashboard"
             },
             {
+                "id": 1,
                 "name": "Tasks",
                 "iconClass": "far fa-clipboard",
-                "isActive": "false",
+                "isActive": false,
                 "path": "/tasks"
             },
             {
+                "id": 2,
                 "name": "Budget",
                 "iconClass": "far fa-credit-card",
-                "isActive": "false",
+                "isActive": false,
                 "path": "/budget"
             },
             {
+                "id": 3,
                 "name": "Reports",
                 "iconClass": "fas fa-chart-line",
-                "isActive": "false",
+                "isActive": false,
                 "path": "/reports"
             },
             {
+                "id": 4,
                 "name": "Calendar",
                 "iconClass": "far fa-calendar",
-                "isActive": "false",
+                "isActive": false,
                 "path": "/calendar"
             } 
         ],
@@ -47,7 +52,25 @@
             "lastUpdate": "June 2021",
             "copyrights": "@2021 All rights reserved"
         },
-        "menuExpanded": true
+        "menuExpanded": true,
+        "avatarList": [
+            {
+                "avatarId": 1,
+                "imgSource": "../../../assets/img/avatar_1.png"
+            },
+            {
+                "avatarId": 2,
+                "imgSource": "../../../assets/img/avatar_2.png"
+            },
+            {
+                "avatarId": 3,
+                "imgSource": "../../../assets/img/avatar_3.png"
+            },
+            {
+                "avatarId": 4,
+                "imgSource": "../../../assets/img/avatar_4.png"
+            }
+        ]
     },
     "userData": {
         "notificationData": {

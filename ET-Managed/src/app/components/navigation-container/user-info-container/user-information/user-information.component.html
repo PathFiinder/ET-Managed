@@ -4,7 +4,7 @@
         <div class="userInfo__content">
             <ul class="userInfo__list">
                 <li class="userInfo__item" *ngFor="let item of Object.keys(userInfoData);">
-                    <div class="userInfo__text">
+                    <div class="userInfo__text" *ngIf="item !== 'avatarId'">
                         User {{item}}: 
                         <p class="userInfo__text--active"> {{userInfoData[item]}} </p>
                     </div>

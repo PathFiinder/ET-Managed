@@ -9,6 +9,7 @@ export const hidePopupsOnNotificationList = createAction(NotificationActionType.
 export const deleteAllNotifications = createAction(NotificationActionType.DELETE_NOTIFICATIONS);
 export const deleteNotificationItemById = createAction(NotificationActionType.DELETE_NOTIFICATION_BY_ID, props<{notificationItemId: number}>());
 export const changeIsMenuExpanded = createAction(NotificationActionType.CHANGE_IS_MENU_EXPANDED);
+export const changeActiveNavigationItemById = createAction(NotificationActionType.CHANGE_ACTIVE_NAVIGATION_ITEM_BY_ID, props<{itemId: number}>());
 
 export const updateNotificationIsNew = createAction(NotificationActionType.UPDATE_NOTIFICATION_IS_NEW);
 export const updateNotificationItemIsActiveById = createAction(NotificationActionType.UPDATE_NOTIFICATION_ITEM_IS_ACTIVE, props<{notificationItemId: number}>())

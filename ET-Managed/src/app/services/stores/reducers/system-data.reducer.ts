@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { changeIsMenuExpanded, deleteAllNotifications, deleteNotificationItemById, getSystemDataSuccess, hidePopupsOnNotificationList, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from '../actions/system-data.actions';
+import { changeActiveNavigationItemById, changeIsMenuExpanded, deleteAllNotifications, deleteNotificationItemById, getSystemDataSuccess, hidePopupsOnNotificationList, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from '../actions/system-data.actions';
 import { NotificationItem, SystemData } from '../types/systemData.model';
 
 export const initialState: SystemData = {
@@ -7,7 +7,8 @@ export const initialState: SystemData = {
    applicationData: {
     navigationList: [], 
     systemInfo: null,
-    menuExpanded: null
+    menuExpanded: null,
+    avatarList: []
    },
    userData: {
     notificationData: {
@@ -38,7 +39,8 @@ export const initialState: SystemData = {
               applicationData: {
                   navigationList: payload.applicationData.navigationList,
                   systemInfo: payload.applicationData.systemInfo,
-                  menuExpanded: payload.applicationData.menuExpanded
+                  menuExpanded: payload.applicationData.menuExpanded,
+                  avatarList: payload.applicationData.avatarList
               },
               userData: payload.userData
           }
@@ -69,6 +71,25 @@ export const initialState: SystemData = {
             applicationData: {
                 ...state.applicationData,
                 menuExpanded: !state.applicationData.menuExpanded
+            }
+        }
+    }),
+    on(changeActiveNavigationItemById,  (state: SystemData, {itemId}) => { 
+        return {
+            ...state,
+            applicationData: {
+                ...state.applicationData,
+                navigationList: [
+                    ...state.applicationData.navigationList.map(navigationItem => navigationItem.id === itemId
+                        ? { 
+                             ...navigationItem, 
+                             isActive: true,
+                          }
+                        : { 
+                            ...navigationItem, 
+                            isActive: false,
+                         }),
+                ]
             }
         }
     }),
