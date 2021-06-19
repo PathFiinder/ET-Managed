@@ -1,1 +1,36 @@
-<p>overview works!</p>
+<div class="dashboard_container">
+    <div class="dashboard_overview">
+        <h3 class="dashboard_overview__title">Dashboard</h3>
+        <div class="dashboard_overview__stats stats">
+            <div class="stats_item">
+                <p class="stats_item__single stats_item--count">{{ (activeTasks | async)?.length ? (activeTasks | async)?.length : 0}}</p> 
+                <p class="stats_item__single  stats_item--title">Active tasks</p>
+            </div>
+            <div class="stats_item">
+                <p class="stats_item__single  stats_item--count">{{ (doneTasks | async)?.length ? (doneTasks | async)?.length : 0}}</p> 
+                <p class="stats_item__single  stats_item--title">Done tasks</p>
+            </div>
+            <div class="stats_item">
+                <p class="stats_item__single  stats_item--count stats_item--expenses">{{ (totalExpensesInMonth | async) ? (totalExpensesInMonth | async) : 0}}</p> 
+                <p class="stats_item__single  stats_item--title">Total expenses</p>
+            </div>
+            <div class="stats_item stats_item--planning">
+                <p class="stats_item__single  stats_item--count stats_item--expenses">{{ (totalPlannedItems | async)?.length ? (totalPlannedItems | async)?.length : 0}}</p> 
+                <p class="stats_item__single  stats_item--title">Planned expenses</p>
+            </div>
+        </div>
+        <div class="dashboard__buttonsContainer buttonsContainer">
+            <button class="buttonsContainer__singleButton"  (click)="onTasksReportClick()" [ngClass]="(isTasksReportsActive | async) ? 'buttonsContainer__singleButton--active' : ''">Tasks</button>
+            <button class="buttonsContainer__singleButton" (click)="onBudgetReportClick()" [ngClass]="(isBudgetReportsActice | async) ? 'buttonsContainer__singleButton--active' : ''">Budget</button>
+        </div>
+        <button class="dashboard_button" routerLink="/Reports" (click)="onViewReportsClick()">View Reports</button>
+    </div>
+    <div class="dashboard_reports">
+        <ng-container *ngIf="(isTasksReportsActive | async)">
+            <app-dashboad-tasks-report></app-dashboad-tasks-report>
+        </ng-container>
+        <ng-container *ngIf="(isBudgetReportsActice | async)">
+            <app-dashboad-budget-report></app-dashboad-budget-report>
+        </ng-container>
+    </div>
+</div>

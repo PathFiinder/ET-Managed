@@ -1,0 +1,82 @@
+.dashboard_container
+    height: 100%
+    width: 100%
+    background-color: #E7EBEE
+    display: flex
+    flex-direction: column
+    .dashboard_overview
+        flex-basis: 120px
+        width: 100%
+        background-color: white
+        padding-top: 30px
+        padding-left: 30px
+        position: relative
+        .dashboard_overview__title
+            font-size: 32px
+            font-weight: bold
+            letter-spacing: 1px
+        .dashboard_overview__stats, .stats
+            position: absolute
+            top: 35px
+            right: 280px
+            width: 500px
+            height: 50px
+            display: flex
+            flex-direction: row
+            .stats_item
+                flex-basis: calc(100% / 4)
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                .stats_item__single 
+                    flex-basis: 50%
+                    text-align: center
+                .stats_item--count
+                    font-weight: bold
+                    font-size: 20px
+                .stats_item--expenses
+                    color: #42AEA7
+            .stats_item--planning
+                flex-basis: 40%
+        .dashboard__buttonsContainer, .buttonsContainer
+            position: absolute
+            bottom: 0
+            left: 0
+            height: 30px
+            width: 220px
+            display: flex
+            flex-direction: row
+            justify-content: space-around
+            .buttonsContainer__singleButton
+                flex-basis: 40%
+                border: none
+                background-color: transparent
+                text-align: center
+                text-transform: uppercase
+                color: #8F8F96
+                cursor: pointer
+                font-weight: bold
+                font-size: 16px
+                &--active
+                    color: #1d9690
+                    font-size: 20px
+        .dashboard_button
+            position: absolute
+            top: 50%
+            right: 50px
+            transform: translateY(-50%)
+            height: 50px
+            width: 130px
+            background-color: #D5A84E
+            color: white
+            border: none
+            font-weight: bold
+            text-transform: uppercase
+            letter-spacing: 0.5px
+            cursor: pointer
+    .dashboard_reports
+        flex-grow: 1
+        width: 100%
+        padding: 20px
+        background-color: #E7EBEE

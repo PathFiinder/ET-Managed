@@ -39,6 +39,16 @@ export const selectAvatarList = createSelector<any, models.ApplicationData, mode
     (applicationData: models.ApplicationData) => applicationData.avatarList
 )
 
+export const selectIsTasksReportsActive = createSelector<any, models.ApplicationData, boolean>(
+    selectApplicationData,
+    (applicationData: models.ApplicationData) => applicationData.isTasksReportsActive
+)
+
+export const selectIsBudgetReportsActice = createSelector<any, models.ApplicationData, boolean>(
+    selectApplicationData,
+    (applicationData: models.ApplicationData) => applicationData.isBudgetReportsActice
+)
+
 export const selectNavigationItemByName = createSelector<any, string, models.NavigationItem[], models.NavigationItem> (
     selectNavigationList,
     (navigationItems: models.NavigationItem[], itemName: string) =>  navigationItems.find(item => item.name === itemName)
@@ -64,9 +74,9 @@ export const selectNotificationItemById = createSelector<any, number, models.Not
     (notificationList: models.NotificationItem[], index: number) => notificationList[index]
 );
 
-export const selectAllNotificationItemsByCategory = createSelector<any, models.NotificationItemCategory, models.NotificationItem[], models.NotificationItem | models.NotificationItem[]>(
+export const selectAllNotificationItemsByCategory = createSelector<any, models.CategoryAndPriority, models.NotificationItem[], models.NotificationItem | models.NotificationItem[]>(
     selectNotificationList,
-    (notificationList: models.NotificationItem[], category: models.NotificationItemCategory) => notificationList.filter(item => item.category === category)
+    (notificationList: models.NotificationItem[], category: models.CategoryAndPriority) => notificationList.filter(item => item.category === category)
 );
 
 export const selectAllExpandedNotificationItems = createSelector<any, models.NotificationItem[], models.NotificationItem | models.NotificationItem[]> (
@@ -94,15 +104,50 @@ export const selectTasksList = createSelector<any, models.TaskData, models.Tasks
     (tasksData: models.TaskData) => tasksData.tasksList
 );
 
+export const selectActiveTasks = createSelector<any, models.TasksItem[], models.TasksItem[] | models.TasksItem>(
+    selectTasksList,
+    (taskList: models.TasksItem[]) => taskList.filter(task => task.isActive)
+)
+
+export const selectDoneTasks = createSelector<any, models.TasksItem[], models.TasksItem[] | models.TasksItem>(
+    selectTasksList,
+    (taskList: models.TasksItem[]) => taskList.filter(task => task.isDone)
+)
+
+export const selectTasksByPriority = createSelector<any, models.CategoryAndPriority, models.TasksItem[], models.TasksItem[]>(
+    selectTasksList,
+    (taskList: models.TasksItem[], categoryPriority: models.CategoryAndPriority) => taskList.filter(task => task.priority === categoryPriority)
+)
+
 export const selectBudgetData = createSelector<any, models.UserData, models.BudgetData>(
     selectUserData,
-    (userData: models.UserData) => userData.budgetData
+    (userData: models.UserData) => userData.budgetData 
 );
 
 export const selectBudgetList = createSelector<any, models.BudgetData, models.BudgetItem[]>(
     selectBudgetData,
-    (budgetData: models.BudgetData) => budgetData.budgetList
+    (budgetData: models.BudgetData) => budgetData?.budgetList 
 );
+
+export const selectBudgetItemByRange = createSelector<any, any, models.BudgetItem[], models.BudgetItem>(
+    selectBudgetList,
+    (budgetItems: models.BudgetItem[], props: any) => budgetItems?.find(item => item.range === props.rangeToSelect)
+)
+
+export const selectBudgetItemTotalExpensesByRange = createSelector<any, any, models.BudgetItem[], number>(
+    selectBudgetList,
+    (budgetItems: models.BudgetItem[], props: any) => 
+        selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
+        reduce((sum, { price, type }) => type === models.MoneyDestination.EXPENSE ? sum + price : sum, 0)
+)
+
+
+export const selectBudgetItemAllPlanningItemsByRange = createSelector<any, any, models.BudgetItem[], models.MonthBudgetItem[]>(
+    selectBudgetList,
+    (budgetItems: models.BudgetItem[], props: any) => 
+        selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
+        filter(item => item.category === models.MoneyCategory.PLANNING)
+)
 
 export const selectChartsData = createSelector<any, models.UserData, models.ChartsData>(
     selectUserData,

@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { changeActiveNavigationItemById, changeIsMenuExpanded, deleteAllNotifications, deleteNotificationItemById, getSystemDataSuccess, hidePopupsOnNotificationList, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from '../actions/system-data.actions';
+import { changeActiveDashboardReportsTab, changeActiveNavigationItemById, changeIsMenuExpanded, deleteAllNotifications, deleteNotificationItemById, getSystemDataSuccess, hidePopupsOnNotificationList, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from '../actions/system-data.actions';
 import { NotificationItem, SystemData } from '../types/systemData.model';
 
 export const initialState: SystemData = {
@@ -8,7 +8,9 @@ export const initialState: SystemData = {
     navigationList: [], 
     systemInfo: null,
     menuExpanded: null,
-    avatarList: []
+    avatarList: [],
+    isTasksReportsActive: null,
+    isBudgetReportsActice: null
    },
    userData: {
     notificationData: {
@@ -40,9 +42,17 @@ export const initialState: SystemData = {
                   navigationList: payload.applicationData.navigationList,
                   systemInfo: payload.applicationData.systemInfo,
                   menuExpanded: payload.applicationData.menuExpanded,
-                  avatarList: payload.applicationData.avatarList
+                  avatarList: payload.applicationData.avatarList,
+                  isTasksReportsActive: payload.applicationData.isTasksReportsActive,
+                  isBudgetReportsActice: payload.applicationData.isBudgetReportsActice
               },
-              userData: payload.userData
+              userData: {
+                notificationData: payload.userData.notificationData,
+                tasksData: payload.userData.tasksData,
+                budgetData: payload.userData.budgetData,
+                chartsData: payload.userData.chartsData,
+                calendarData: payload.userData.calendarData,
+              }
           }
       }),
       on(hidePopupsOnNotificationList, (state: SystemData) => { 
@@ -166,6 +176,16 @@ export const initialState: SystemData = {
                     ...state.userData.notificationData,
                     notificationList: state.userData.notificationData.notificationList.filter(notificationItem => notificationItem.id !== notificationItemId)
                 }
+            }
+        }
+    }),
+    on(changeActiveDashboardReportsTab, (state: SystemData, { activeTabIndex}) => {
+        return {
+            ...state,
+            applicationData: {
+                ...state.applicationData,
+                isTasksReportsActive: activeTabIndex === 0 ? true : false,
+                isBudgetReportsActice: activeTabIndex === 1 ? true : false
             }
         }
     })

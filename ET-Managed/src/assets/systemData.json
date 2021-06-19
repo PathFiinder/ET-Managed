@@ -70,7 +70,9 @@
                 "avatarId": 4,
                 "imgSource": "../../../assets/img/avatar_4.png"
             }
-        ]
+        ],
+        "isTasksReportsActive": true,
+        "isBudgetReportsActice": false
     },
     "userData": {
         "notificationData": {
@@ -111,10 +113,204 @@
             "isNewNotification": true
         },
         "tasksData": {
-            "tasksList": []
+            "tasksList": [
+                {
+                    "id": 0,
+                    "shortName": "Example 1",
+                    "description": "Example 1 description",
+                    "dataStart": "2021-06-18T10:00",
+                    "dataEnd": "2021-06-18T12:00",
+                    "isDone": false,
+                    "isActive": true,
+                    "priority": "Normal"
+                },
+                {
+                    "id": 1,
+                    "shortName": "Example 2",
+                    "description": "Example 2 description",
+                    "dataStart": "2021-06-18T14:00",
+                    "dataEnd": "2021-06-18T18:00",
+                    "isDone": false,
+                    "isActive": true,
+                    "priority": "Important"
+                },
+                {
+                    "id": 2,
+                    "shortName": "Example 3",
+                    "description": "Example 3 description",
+                    "dataStart": "2021-06-18T20:00",
+                    "dataEnd": "2021-06-18T22:00",
+                    "isDone": false,
+                    "isActive": true,
+                    "priority": "Very Important"
+                },
+                {
+                    "id": 3,
+                    "shortName": "Example 4",
+                    "description": "Example 4 description",
+                    "dataStart": "2021-06-119T10:00",
+                    "dataEnd": "2021-06-19T12:00",
+                    "isDone": true,
+                    "isActive": false,
+                    "priority": "Normal"
+                },
+                {
+                    "id": 4,
+                    "shortName": "Example 5",
+                    "description": "Example 5 description",
+                    "dataStart": "2021-06-19T16:00",
+                    "dataEnd": "2021-06-19T18:00",
+                    "isDone": false,
+                    "isActive": true,
+                    "priority": "Important"
+                },
+                {
+                    "id": 5,
+                    "shortName": "Example 6",
+                    "description": "Example 6 description",
+                    "dataStart": "2021-06-19T20:00",
+                    "dataEnd": "2021-06-19T22:00",
+                    "isDone": true,
+                    "isActive": false,
+                    "priority": "Very Important"
+                },
+                {
+                    "id": 6,
+                    "shortName": "Example 7",
+                    "description": "Example 7 description",
+                    "dataStart": "2021-06-20T10:00",
+                    "dataEnd": "2021-06-20T12:00",
+                    "isDone": false,
+                    "isActive": true,
+                    "priority": "Normal"
+                },
+                {
+                    "id": 7,
+                    "shortName": "Example 8",
+                    "description": "Example 8 description",
+                    "dataStart": "2021-06-21T10:00",
+                    "dataEnd": "2021-06-21T12:00",
+                    "isDone": false,
+                    "isActive": true,
+                    "priority": "Important"
+                },
+                {
+                    "id": 8,
+                    "shortName": "Example 9",
+                    "description": "Example 9 description",
+                    "dataStart": "2021-06-22T10:00",
+                    "dataEnd": "2021-06-22T12:00",
+                    "isDone": true,
+                    "isActive": false,
+                    "priority": "Very Important"
+                },
+                {
+                    "id": 9,
+                    "shortName": "Example 10",
+                    "description": "Example 10 description",
+                    "dataStart": "2021-06-23T12:00",
+                    "dataEnd": "2021-06-23T15:00",
+                    "isDone": false,
+                    "isActive": true,
+                    "priority": "Normal"
+                }
+            ]
         },
-        "budegtData": {
-            "budgetList": []
+        "budgetData": {
+            "budgetList": [
+                {
+                    "range": "06.2021",
+                    "totalBudget": 3300,
+                    "monthBudgetItems": [
+                        {
+                            "id": 0,
+                            "name": "Rachunek 1",
+                            "description": "Rachunek za miesiac 1",
+                            "type": "expense",
+                            "price": 1500,
+                            "pucharseDate": "2021-06-23T12:00",
+                            "priority": "Very Important",
+                            "category": "Bills"
+                        },
+                        {
+                            "id": 1,
+                            "name": "Kupienie 1",
+                            "description": "Kupienie w miesiacu 1",
+                            "type": "expense",
+                            "price": 800,
+                            "pucharseDate": "2021-06-18T12:00",
+                            "priority": "Important",
+                            "category": "House"
+                        },
+                        {
+                            "id": 2,
+                            "name": "Zwrot pożyczki",
+                            "description": "Zwrot pozyczki za poprzedni miesiąc",
+                            "type": "income",
+                            "price": 1500,
+                            "pucharseDate": "2021-06-23T12:00",
+                            "priority": "Very Important",
+                            "category": "Loan"
+                        },
+                        {
+                            "id": 3,
+                            "name": "Planowanie kupna czegoś 1",
+                            "description": "Planuje coś",
+                            "type": "expense",
+                            "price": 200,
+                            "pucharseDate": "2021-06-30T12:00",
+                            "priority": "Very Important",
+                            "category": "Planning"
+                        }
+                    ]
+                },
+                {
+                    "range": "05.2021",
+                    "totalBudget": 5000,
+                    "monthBudgetItems": [
+                        {
+                            "id": 0,
+                            "name": "Rachunek 1",
+                            "description": "Rachunek za miesiac 1",
+                            "type": "expense",
+                            "price": 1500,
+                            "pucharseDate": "2021-06-23T12:00",
+                            "priority": "Very Important",
+                            "category": "Bills"
+                        },
+                        {
+                            "id": 1,
+                            "name": "Kupienie 1",
+                            "description": "Kupienie w miesiacu 1",
+                            "type": "expense",
+                            "price": 800,
+                            "pucharseDate": "2021-06-18T12:00",
+                            "priority": "Important",
+                            "category": "House"
+                        },
+                        {
+                            "id": 2,
+                            "name": "Zwrot pożyczki",
+                            "description": "Zwrot pozyczki za poprzedni miesiąc",
+                            "type": "income",
+                            "price": 1500,
+                            "pucharseDate": "2021-06-23T12:00",
+                            "priority": "Very Important",
+                            "category": "Loan"
+                        },
+                        {
+                            "id": 3,
+                            "name": "Planowanie kupna czegoś 1",
+                            "description": "Planuje coś",
+                            "type": "expense",
+                            "price": 200,
+                            "pucharseDate": "2021-06-30T12:00",
+                            "priority": "Very Important",
+                            "category": "Planning"
+                        }
+                    ]
+                }
+            ]
         },
         "chartsData": {
             "chartsList": []

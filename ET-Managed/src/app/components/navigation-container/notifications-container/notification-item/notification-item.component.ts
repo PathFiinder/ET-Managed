@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NotificationItemPriority } from 'src/app/components/models/notification-item-priority.model';
 import { deleteNotificationItemById, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from 'src/app/services/stores/actions/system-data.actions';
-import { NotificationItem, NotificationItemCategory } from 'src/app/services/stores/types/systemData.model';
+import { NotificationItem, CategoryAndPriority } from 'src/app/services/stores/types/systemData.model';
 
 
 @Component({
@@ -14,10 +14,10 @@ export class NotificationItemComponent implements OnInit {
 
   @Input() item?: NotificationItem;
   private choosePriority = new Map([
-    [NotificationItemCategory.IRRELEVANT, () => this.getIrrelevantPriority()],
-    [NotificationItemCategory.NORMAL, () => this.getNormalPriority()],
-    [NotificationItemCategory.IMPORTANT, () => this.getImportantPriority()],
-    [NotificationItemCategory.VERY_IMPORTANT, () => this.getVeryImportantPriority()]
+    [CategoryAndPriority.IRRELEVANT, () => this.getIrrelevantPriority()],
+    [CategoryAndPriority.NORMAL, () => this.getNormalPriority()],
+    [CategoryAndPriority.IMPORTANT, () => this.getImportantPriority()],
+    [CategoryAndPriority.VERY_IMPORTANT, () => this.getVeryImportantPriority()]
   ])
 
   constructor(private store: Store) { }
@@ -52,7 +52,7 @@ export class NotificationItemComponent implements OnInit {
     event.stopPropagation();
   }
 
-  public definePriorityOfNotification(itemCategory: NotificationItemCategory): NotificationItemPriority {
+  public definePriorityOfNotification(itemCategory: CategoryAndPriority): NotificationItemPriority {
     return this.choosePriority.get(itemCategory)()
   }
 

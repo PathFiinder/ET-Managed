@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { SystemDataActionType, NotificationActionType } from "../models/system-data-actions.model";
+import { SystemDataActionType, NotificationActionType, DashboardActionType } from "../models/system-data-actions.model";
 
 
 export const getSystemData = createAction(SystemDataActionType.GET_SYSTEM_DATA);
@@ -10,6 +10,7 @@ export const deleteAllNotifications = createAction(NotificationActionType.DELETE
 export const deleteNotificationItemById = createAction(NotificationActionType.DELETE_NOTIFICATION_BY_ID, props<{notificationItemId: number}>());
 export const changeIsMenuExpanded = createAction(NotificationActionType.CHANGE_IS_MENU_EXPANDED);
 export const changeActiveNavigationItemById = createAction(NotificationActionType.CHANGE_ACTIVE_NAVIGATION_ITEM_BY_ID, props<{itemId: number}>());
+export const changeActiveDashboardReportsTab = createAction(DashboardActionType.CHANGE_ACTIVE_DASHBOARD_REPORTS_TAB, props<{activeTabIndex: number}>());
 
 export const updateNotificationIsNew = createAction(NotificationActionType.UPDATE_NOTIFICATION_IS_NEW);
 export const updateNotificationItemIsActiveById = createAction(NotificationActionType.UPDATE_NOTIFICATION_ITEM_IS_ACTIVE, props<{notificationItemId: number}>())

@@ -18,7 +18,9 @@ export interface ApplicationData {
     navigationList: NavigationItem[],
     systemInfo: SystemInfo,
     menuExpanded: boolean,
-    avatarList: AvatarItem[]
+    avatarList: AvatarItem[],
+    isTasksReportsActive: boolean,
+    isBudgetReportsActice: boolean
 }
 
 export interface AvatarItem {
@@ -58,12 +60,12 @@ export interface NotificationItem {
     id: number,
     nameShort: string,
     nameLong: string,
-    category: NotificationItemCategory,
+    category: CategoryAndPriority,
     isExpanded: boolean,
     isActive: boolean
 }
 
-export enum NotificationItemCategory {
+export enum CategoryAndPriority {
     IRRELEVANT = 'Irrelevant',
     NORMAL = 'Normal',
     IMPORTANT = 'Important',
@@ -74,7 +76,15 @@ export interface TaskData {
     tasksList: TasksItem[]
 }
 
-export interface TasksItem { 
+export interface TasksItem {
+    id: number,
+    shortName: string,
+    description: string,
+    dataStart: Date,
+    dataEnd: Date,
+    isDone: boolean,
+    isActive: boolean,
+    priority: CategoryAndPriority
 }
 
 export interface BudgetData {
@@ -82,8 +92,33 @@ export interface BudgetData {
 }
 
 export interface BudgetItem {
+    range: string,
+    totalBudget: number,
+    monthBudgetItems: MonthBudgetItem[]
 }
 
+export interface MonthBudgetItem {
+    id: number,
+    name: string,
+    description: string,
+    type: MoneyDestination,
+    price: number,
+    pucharseDate: Date,
+    priority: CategoryAndPriority,
+    category: MoneyCategory
+}
+
+export enum MoneyDestination {
+    EXPENSE = "expense",
+    INCOME = "income"
+}
+
+export enum MoneyCategory {
+    BILLS = "Bills",
+    HOUSE = "House",
+    LOAN = "Loan",
+    PLANNING = "Planning"
+}
 export interface ChartsData {
     chartsList: ChartItem[]
 }
