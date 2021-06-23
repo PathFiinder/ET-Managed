@@ -18,9 +18,7 @@ export interface ApplicationData {
     navigationList: NavigationItem[],
     systemInfo: SystemInfo,
     menuExpanded: boolean,
-    avatarList: AvatarItem[],
-    isTasksReportsActive: boolean,
-    isBudgetReportsActice: boolean
+    avatarList: AvatarItem[]
 }
 
 export interface AvatarItem {
@@ -103,14 +101,15 @@ export interface MonthBudgetItem {
     description: string,
     type: MoneyDestination,
     price: number,
-    pucharseDate: Date,
+    pucharseDate: string,
     priority: CategoryAndPriority,
     category: MoneyCategory
 }
 
 export enum MoneyDestination {
     EXPENSE = "expense",
-    INCOME = "income"
+    INCOME = "income",
+    PLANNING_EXPENSE = 'planning expense'
 }
 
 export enum MoneyCategory {

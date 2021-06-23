@@ -70,9 +70,7 @@
                 "avatarId": 4,
                 "imgSource": "../../../assets/img/avatar_4.png"
             }
-        ],
-        "isTasksReportsActive": true,
-        "isBudgetReportsActice": false
+        ]
     },
     "userData": {
         "notificationData": {
@@ -238,7 +236,7 @@
                             "description": "Kupienie w miesiacu 1",
                             "type": "expense",
                             "price": 800,
-                            "pucharseDate": "2021-06-18T12:00",
+                            "pucharseDate": "2021-06-24T12:00",
                             "priority": "Important",
                             "category": "House"
                         },
@@ -256,11 +254,41 @@
                             "id": 3,
                             "name": "Planowanie kupna czegoś 1",
                             "description": "Planuje coś",
-                            "type": "expense",
+                            "type": "planning expense",
                             "price": 200,
                             "pucharseDate": "2021-06-30T12:00",
                             "priority": "Very Important",
                             "category": "Planning"
+                        },
+                        {
+                            "id": 4,
+                            "name": "Kupienie 2",
+                            "description": "Kupienie w miesiacu 2",
+                            "type": "expense",
+                            "price": 5000,
+                            "pucharseDate": "2021-06-23T12:00",
+                            "priority": "Important",
+                            "category": "House"
+                        },
+                        {
+                            "id": 5,
+                            "name": "Kupienie 3",
+                            "description": "Kupienie w miesiacu 3",
+                            "type": "expense",
+                            "price": 1300,
+                            "pucharseDate": "2021-06-25T12:00",
+                            "priority": "Important",
+                            "category": "House"
+                        },
+                        {
+                            "id": 6,
+                            "name": "Kupienie 4",
+                            "description": "Kupienie w miesiacu 4",
+                            "type": "expense",
+                            "price": 2500,
+                            "pucharseDate": "2021-06-30T12:00",
+                            "priority": "Important",
+                            "category": "House"
                         }
                     ]
                 },

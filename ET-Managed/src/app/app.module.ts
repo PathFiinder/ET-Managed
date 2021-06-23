@@ -25,13 +25,13 @@ import { SplashScreenStateService } from './services/splash-screen/splash-screen
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { systemDataReducer } from './services/stores/reducers/system-data.reducer';
 import { SystemDataEffects } from './services/stores/effects/systame-data.effects';
-import { DashboadTasksReportComponent } from './components/main-content/dashboard-content/dashboard-reports/dashboad-tasks-report/dashboad-tasks-report.component';
-import { DashboadBudgetReportComponent } from './components/main-content/dashboard-content/dashboard-reports/dashboad-budget-report/dashboad-budget-report.component';
+import { DashboardReportsComponent } from './components/main-content/dashboard-content/dashboard-reports/dashboard-reports.component';
 import { StackedLineChartComponent } from './components/utils/stacked-line-chart/stacked-line-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
+import { NgApexchartsModule } from 'ng-apexcharts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,8 +50,7 @@ import { ChartsModule } from 'ng2-charts';
     CalendarContentComponent,
     NotFoundContentComponent,
     SplashScreenComponent,
-    DashboadTasksReportComponent,
-    DashboadBudgetReportComponent,
+    DashboardReportsComponent,
     StackedLineChartComponent
   ],
   imports: [
@@ -67,7 +66,8 @@ import { ChartsModule } from 'ng2-charts';
     FormsModule,
     NgxChartsModule,
     BrowserAnimationsModule,
-    ChartsModule
+    ChartsModule,
+    NgApexchartsModule,
   ],
   providers: [SplashScreenStateService],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 <div class="dashboard-tasks-report tasks-report">
     <div class="tasks-report__item tasks-report__item--first">
-        <app-stacked-line-chart></app-stacked-line-chart>
+        <app-stacked-line-chart [budgetItems]="(allBudgetItems | async)" class="report-item-chart"></app-stacked-line-chart>
+        <div class="task-report__item--label report-item-label"></div>
     </div>
     <div class="tasks-report__item tasks-report__item--second">
         Second graph

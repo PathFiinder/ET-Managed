@@ -39,16 +39,6 @@ export const selectAvatarList = createSelector<any, models.ApplicationData, mode
     (applicationData: models.ApplicationData) => applicationData.avatarList
 )
 
-export const selectIsTasksReportsActive = createSelector<any, models.ApplicationData, boolean>(
-    selectApplicationData,
-    (applicationData: models.ApplicationData) => applicationData.isTasksReportsActive
-)
-
-export const selectIsBudgetReportsActice = createSelector<any, models.ApplicationData, boolean>(
-    selectApplicationData,
-    (applicationData: models.ApplicationData) => applicationData.isBudgetReportsActice
-)
-
 export const selectNavigationItemByName = createSelector<any, string, models.NavigationItem[], models.NavigationItem> (
     selectNavigationList,
     (navigationItems: models.NavigationItem[], itemName: string) =>  navigationItems.find(item => item.name === itemName)
@@ -139,6 +129,13 @@ export const selectBudgetItemTotalExpensesByRange = createSelector<any, any, mod
     (budgetItems: models.BudgetItem[], props: any) => 
         selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
         reduce((sum, { price, type }) => type === models.MoneyDestination.EXPENSE ? sum + price : sum, 0)
+)
+
+
+export const selectBudgetItemsMonthItemsByRange = createSelector<any, any, models.BudgetItem[], models.MonthBudgetItem[]>(
+    selectBudgetList,
+    (budgetItems: models.BudgetItem[], props: any) => 
+     selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.filter(item => item.type === models.MoneyDestination.EXPENSE)      
 )
 
 

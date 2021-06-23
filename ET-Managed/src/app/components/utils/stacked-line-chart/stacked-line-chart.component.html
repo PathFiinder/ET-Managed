@@ -1,11 +1,15 @@
-<div style="display: block; width: '800px';  height: '50px'">
-  <canvas baseChart width="200" height="80"
-    [datasets]="lineChartData"
-    [labels]="lineChartLabels"
-    [options]="lineChartOptions"
-    [colors]="lineChartColors"
-    [legend]="lineChartLegend"
-    [chartType]="lineChartType"
-    [plugins]="lineChartPlugins">
-  </canvas>
+<div id="line-chart" class="line-chart">
+  <ng-container *ngIf="isChartAvailable">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [dataLabels]="chartOptions.dataLabels"
+      [grid]="chartOptions.grid"
+      [stroke]="chartOptions.stroke"
+      [title]="chartOptions.title"
+      [labels]="chartOptions.labels"
+      [annotations]="chartOptions.annotations"
+    ></apx-chart>
+</ng-container>
 </div>

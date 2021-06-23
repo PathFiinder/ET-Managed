@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { changeActiveDashboardReportsTab, changeActiveNavigationItemById, changeIsMenuExpanded, deleteAllNotifications, deleteNotificationItemById, getSystemDataSuccess, hidePopupsOnNotificationList, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from '../actions/system-data.actions';
+import {  changeActiveNavigationItemById, changeIsMenuExpanded, deleteAllNotifications, deleteNotificationItemById, getSystemDataSuccess, hidePopupsOnNotificationList, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from '../actions/system-data.actions';
 import { NotificationItem, SystemData } from '../types/systemData.model';
 
 export const initialState: SystemData = {
@@ -8,9 +8,7 @@ export const initialState: SystemData = {
     navigationList: [], 
     systemInfo: null,
     menuExpanded: null,
-    avatarList: [],
-    isTasksReportsActive: null,
-    isBudgetReportsActice: null
+    avatarList: []
    },
    userData: {
     notificationData: {
@@ -176,16 +174,6 @@ export const initialState: SystemData = {
                     ...state.userData.notificationData,
                     notificationList: state.userData.notificationData.notificationList.filter(notificationItem => notificationItem.id !== notificationItemId)
                 }
-            }
-        }
-    }),
-    on(changeActiveDashboardReportsTab, (state: SystemData, { activeTabIndex}) => {
-        return {
-            ...state,
-            applicationData: {
-                ...state.applicationData,
-                isTasksReportsActive: activeTabIndex === 0 ? true : false,
-                isBudgetReportsActice: activeTabIndex === 1 ? true : false
             }
         }
     })
