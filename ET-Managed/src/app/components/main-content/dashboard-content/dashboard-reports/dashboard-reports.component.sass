@@ -4,6 +4,7 @@
     display: flex
     flex-direction: row
     flex-wrap: wrap
+    margin-bottom: 50px
     .tasks-report__item 
         flex-basis: 50%
         height: 45%
@@ -14,9 +15,35 @@
         overflow: hidden
         display: flex
         flex-direction: row
+        margin: 0 0 20px 0
+    .tasks-report__item--second
+        margin-right: 10px
+        flex-basis: calc(50% - 10px)
+    .tasks-report__item--third
+        margin-left: 10px
+        flex-basis: calc(50% - 10px)
     .task-report__item--label, .report-item-label
         flex-grow: 1
         height: 100%
     .report-item-chart
         flex-basis: 80%
         height: 100%
+    .task-report__container
+        height: 100%
+        width: 100%
+        background-color: #F5F6F8
+        .task-report__item--label, .report-item-label
+            display: flex
+            flex-direction: column
+            height: 80%
+            padding-top: 40px
+            .report-item-label_single-item, .label-single-item
+                flex-basis: calc(100%/3)
+                padding-left: 40px
+                .label-single-item--number
+                    font-weight: bold
+                    margin-top: 10px
+                    margin-bottom: 10px
+                    font-size: 20px
+                .label-single-item--income
+                    color: #42AEA7

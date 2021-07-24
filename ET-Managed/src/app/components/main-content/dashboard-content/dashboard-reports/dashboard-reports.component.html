@@ -1,7 +1,22 @@
 <div class="dashboard-tasks-report tasks-report">
     <div class="tasks-report__item tasks-report__item--first">
         <app-stacked-line-chart [budgetItems]="(allBudgetItems | async)" class="report-item-chart"></app-stacked-line-chart>
-        <div class="task-report__item--label report-item-label"></div>
+        <div class="task-report__container">
+            <div class="task-report__item--label report-item-label">
+                <div class="report-item-label_single-item label-single-item">
+                    <p class="label-single-item--number label-single-item--income">{{(totalIncome | async) + ' zł' ? (totalIncome | async) + ' zł' : 0}}</p>
+                    <p class="label-single-item--desc">Total Income</p>
+                </div>
+                <div class="report-item-label_single-item label-single-item">
+                    <p class="label-single-item--number">{{(greatestExpense | async) + ' zł' ? (greatestExpense | async) + ' zł' : 0}}</p>
+                    <p class="label-single-item--desc">Greatest Expense</p>
+                </div>
+                <div class="report-item-label_single-item label-single-item">
+                    <p class="label-single-item--number">{{(savingsFromMonth | async) + ' zł' ? (savingsFromMonth | async) + ' zł' : 0}}</p>
+                    <p class="label-single-item--desc">Able to spend</p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="tasks-report__item tasks-report__item--second">
         Second graph

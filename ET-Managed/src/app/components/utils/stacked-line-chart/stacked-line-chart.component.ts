@@ -17,6 +17,7 @@ import { MonthBudgetItem } from 'src/app/services/stores/types/systemData.model'
 
 export type LineChartOptions = {
   series: ApexAxisChartSeries;
+  colors: any[];
   annotations: ApexAnnotations;
   chart: ApexChart;
   xaxis: ApexXAxis;
@@ -25,6 +26,7 @@ export type LineChartOptions = {
   labels: string[];
   stroke: ApexStroke;
   title: ApexTitleSubtitle;
+  fill: ApexFill
 };
 
 type ProceededData = {
@@ -49,10 +51,13 @@ export class StackedLineChartComponent{
   isChartAvailable: boolean = false;
 
   ngOnChanges() {
+   
     if(this.budgetItems) {
       const chartData: ProceededData = this.proceedData(this.budgetItems);
+      console.log(chartData)
       this.isChartAvailable = true;
       this.setChartOptions(chartData)
+      
     }
 
   }
@@ -69,17 +74,22 @@ export class StackedLineChartComponent{
         height: 370,
         width: 1250,
         type: "line",
+        zoom: {
+          enabled: false
+        },
         toolbar: {
           show: false
         }
       },
+      colors: ['#DCC1BB', '#80C12E', '#0CA0FA', '#7B74A5', '#FD1092', '#7EDABD', '#D3DE2F'],
       annotations: {
-        xaxis: this.generateAnnotationObject(chartData)
+        xaxis: [
+          this.generateAnnotationObject(chartData)
+        ]
       },
-      // },
-      // dataLabels: {
-      //   enabled: true
-      // },
+      dataLabels: {
+        enabled: true
+      },
       stroke: {
         curve: "straight"
       },
@@ -101,6 +111,9 @@ export class StackedLineChartComponent{
       labels: chartData?.dates,
       xaxis: {
         type: "datetime"
+      },
+      fill: {
+        colors: ['#42AEA7']
       }
     };
   }
@@ -133,25 +146,24 @@ export class StackedLineChartComponent{
   }
 
   private generateAnnotationObject(chartData: ProceededData): any {
-    const annotationLabels = []
-    chartData.annotationLabels.forEach((label, index) => {
-      annotationLabels.push( {
-        x: new Date(chartData.dates[index]).getTime(),
+    const max = chartData.prices.reduce((prev, current) => (prev > current) ? prev : current)
+    return {
+        x: new Date(chartData.dates[chartData.prices.indexOf(max)]).getTime(),
         strokeDashArray: 0,
         borderColor: "#775DD0",
         offsetX: 0,
         label: {
           borderColor: "#775DD0",
+          orientation: 'horizontally',
+          offsetX: 34,
           style: {
                 fontSize: "12px",
                 color: "#fff",
                 background: "#775DD0"
               },
-          text: label
+          text: chartData.annotationLabels[chartData.prices.indexOf(max)]
         }
-      })
-    })
-    return annotationLabels
+    }
   }
 
 

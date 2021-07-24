@@ -124,6 +124,36 @@ export const selectBudgetItemByRange = createSelector<any, any, models.BudgetIte
     (budgetItems: models.BudgetItem[], props: any) => budgetItems?.find(item => item.range === props.rangeToSelect)
 )
 
+export const selectBudgetItemsTotalIncomeByRange = createSelector<any, any, models.BudgetItem[], number>(
+    selectBudgetList,
+    (budgetItems: models.BudgetItem[], props: any) => 
+        selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.totalBudget
+)
+
+export const selectBudgetItemMaxExpensesByRange  = createSelector<any, any, models.BudgetItem[], number>(
+    selectBudgetList,
+    (budgetItems: models.BudgetItem[], props: any) => 
+        selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.reduce(function(prev, current) {
+            return (prev.price > current.price) ? prev : current
+        }).price
+)
+
+export const selectTotalSavingFromMonthByRange = createSelector<any, any, models.BudgetItem[], number>(
+    selectBudgetList,
+    (budgetItems: models.BudgetItem[], props: any) => {
+        const totalBudget = selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.totalBudget;
+        const totalExpenses = selectBudgetItemTotalExpensesByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect});
+        return totalBudget - totalExpenses;
+    }
+)
+
+export const selectBudgetItemsTotalExpenseWithSelectedMethodByRange = createSelector<any, any, models.BudgetItem[], number>(
+    selectBudgetList,
+    (budgetItems: models.BudgetItem[], props: any) => 
+        selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
+        reduce((sum, { price, paymentMethod, type }) => paymentMethod === props.paymentMethod && type === models.MoneyDestination.EXPENSE ? sum + price : sum, 0)
+)
+
 export const selectBudgetItemTotalExpensesByRange = createSelector<any, any, models.BudgetItem[], number>(
     selectBudgetList,
     (budgetItems: models.BudgetItem[], props: any) => 

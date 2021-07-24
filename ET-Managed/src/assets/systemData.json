@@ -116,8 +116,8 @@
                     "id": 0,
                     "shortName": "Example 1",
                     "description": "Example 1 description",
-                    "dataStart": "2021-06-18T10:00",
-                    "dataEnd": "2021-06-18T12:00",
+                    "dataStart": "2021-07-18T10:00",
+                    "dataEnd": "2021-07-18T12:00",
                     "isDone": false,
                     "isActive": true,
                     "priority": "Normal"
@@ -126,8 +126,8 @@
                     "id": 1,
                     "shortName": "Example 2",
                     "description": "Example 2 description",
-                    "dataStart": "2021-06-18T14:00",
-                    "dataEnd": "2021-06-18T18:00",
+                    "dataStart": "2021-07-18T14:00",
+                    "dataEnd": "2021-07-18T18:00",
                     "isDone": false,
                     "isActive": true,
                     "priority": "Important"
@@ -136,8 +136,8 @@
                     "id": 2,
                     "shortName": "Example 3",
                     "description": "Example 3 description",
-                    "dataStart": "2021-06-18T20:00",
-                    "dataEnd": "2021-06-18T22:00",
+                    "dataStart": "2021-07-18T20:00",
+                    "dataEnd": "2021-07-18T22:00",
                     "isDone": false,
                     "isActive": true,
                     "priority": "Very Important"
@@ -146,8 +146,8 @@
                     "id": 3,
                     "shortName": "Example 4",
                     "description": "Example 4 description",
-                    "dataStart": "2021-06-119T10:00",
-                    "dataEnd": "2021-06-19T12:00",
+                    "dataStart": "2021-07-119T10:00",
+                    "dataEnd": "2021-07-19T12:00",
                     "isDone": true,
                     "isActive": false,
                     "priority": "Normal"
@@ -156,8 +156,8 @@
                     "id": 4,
                     "shortName": "Example 5",
                     "description": "Example 5 description",
-                    "dataStart": "2021-06-19T16:00",
-                    "dataEnd": "2021-06-19T18:00",
+                    "dataStart": "2021-07-19T16:00",
+                    "dataEnd": "2021-07-19T18:00",
                     "isDone": false,
                     "isActive": true,
                     "priority": "Important"
@@ -166,8 +166,8 @@
                     "id": 5,
                     "shortName": "Example 6",
                     "description": "Example 6 description",
-                    "dataStart": "2021-06-19T20:00",
-                    "dataEnd": "2021-06-19T22:00",
+                    "dataStart": "2021-07-19T20:00",
+                    "dataEnd": "2021-07-19T22:00",
                     "isDone": true,
                     "isActive": false,
                     "priority": "Very Important"
@@ -176,8 +176,8 @@
                     "id": 6,
                     "shortName": "Example 7",
                     "description": "Example 7 description",
-                    "dataStart": "2021-06-20T10:00",
-                    "dataEnd": "2021-06-20T12:00",
+                    "dataStart": "2021-07-20T10:00",
+                    "dataEnd": "2021-07-20T12:00",
                     "isDone": false,
                     "isActive": true,
                     "priority": "Normal"
@@ -186,8 +186,8 @@
                     "id": 7,
                     "shortName": "Example 8",
                     "description": "Example 8 description",
-                    "dataStart": "2021-06-21T10:00",
-                    "dataEnd": "2021-06-21T12:00",
+                    "dataStart": "2021-07-21T10:00",
+                    "dataEnd": "2021-07-21T12:00",
                     "isDone": false,
                     "isActive": true,
                     "priority": "Important"
@@ -196,8 +196,8 @@
                     "id": 8,
                     "shortName": "Example 9",
                     "description": "Example 9 description",
-                    "dataStart": "2021-06-22T10:00",
-                    "dataEnd": "2021-06-22T12:00",
+                    "dataStart": "2021-07-22T10:00",
+                    "dataEnd": "2021-07-22T12:00",
                     "isDone": true,
                     "isActive": false,
                     "priority": "Very Important"
@@ -206,8 +206,8 @@
                     "id": 9,
                     "shortName": "Example 10",
                     "description": "Example 10 description",
-                    "dataStart": "2021-06-23T12:00",
-                    "dataEnd": "2021-06-23T15:00",
+                    "dataStart": "2021-07-23T12:00",
+                    "dataEnd": "2021-07-23T15:00",
                     "isDone": false,
                     "isActive": true,
                     "priority": "Normal"
@@ -217,83 +217,156 @@
         "budgetData": {
             "budgetList": [
                 {
-                    "range": "06.2021",
-                    "totalBudget": 3300,
+                    "range": "07.2021",
+                    "totalBudget": 15000,
                     "monthBudgetItems": [
                         {
                             "id": 0,
+                            "name": "Rachunek 0",
+                            "description": "Rachunek za miesiac 0",
+                            "type": "expense",
+                            "price": 200,
+                            "pucharseDate": "2021-07-01T12:00",
+                            "priority": "Very Important",
+                            "category": "Bills",
+                            "paymentMethod": "credit-card"
+                        },
+                        {
+                            "id": 1,
                             "name": "Rachunek 1",
                             "description": "Rachunek za miesiac 1",
                             "type": "expense",
                             "price": 1500,
-                            "pucharseDate": "2021-06-23T12:00",
+                            "pucharseDate": "2021-07-05T12:00",
                             "priority": "Very Important",
-                            "category": "Bills"
-                        },
-                        {
-                            "id": 1,
-                            "name": "Kupienie 1",
-                            "description": "Kupienie w miesiacu 1",
-                            "type": "expense",
-                            "price": 800,
-                            "pucharseDate": "2021-06-24T12:00",
-                            "priority": "Important",
-                            "category": "House"
+                            "category": "Bills",
+                            "paymentMethod": "cash"
                         },
                         {
                             "id": 2,
+                            "name": "Rachunek 2",
+                            "description": "Rachunek za miesiac 2",
+                            "type": "expense",
+                            "price": 300,
+                            "pucharseDate": "2021-07-08T12:00",
+                            "priority": "Very Important",
+                            "category": "Bills",
+                            "paymentMethod": "credit-card"
+                        },
+                        {
+                            "id": 3,
+                            "name": "Rachunek 3",
+                            "description": "Rachunek za miesiac 3",
+                            "type": "expense",
+                            "price": 700,
+                            "pucharseDate": "2021-07-09T12:00",
+                            "priority": "Very Important",
+                            "category": "Bills",
+                            "paymentMethod": "credit-card"
+                        },
+                        {
+                            "id": 4,
+                            "name": "Rachunek 4",
+                            "description": "Rachunek za miesiac 4",
+                            "type": "expense",
+                            "price": 200,
+                            "pucharseDate": "2021-07-12T12:00",
+                            "priority": "Very Important",
+                            "category": "Bills",
+                            "paymentMethod": "paypal"
+                        },
+                        {
+                            "id": 5,
+                            "name": "Rachunek 1",
+                            "description": "Rachunek za miesiac 5",
+                            "type": "expense",
+                            "price": 350,
+                            "pucharseDate": "2021-07-15T12:00",
+                            "priority": "Very Important",
+                            "category": "Bills",
+                            "paymentMethod": "credit-card"
+                        },
+                        {
+                            "id": 6,
+                            "name": "Rachunek 6",
+                            "description": "Rachunek za miesiac 6",
+                            "type": "expense",
+                            "price": 110,
+                            "pucharseDate": "2021-07-19T12:00",
+                            "priority": "Very Important",
+                            "category": "Bills",
+                            "paymentMethod": "cash"
+                        },
+                        {
+                            "id": 7,
+                            "name": "Kupienie 7",
+                            "description": "Kupienie w miesiacu 7",
+                            "type": "expense",
+                            "price": 800,
+                            "pucharseDate": "2021-07-24T12:00",
+                            "priority": "Important",
+                            "category": "House",
+                            "paymentMethod": "cash"
+                        },
+                        {
+                            "id": 8,
                             "name": "Zwrot pożyczki",
                             "description": "Zwrot pozyczki za poprzedni miesiąc",
                             "type": "income",
                             "price": 1500,
-                            "pucharseDate": "2021-06-23T12:00",
+                            "pucharseDate": "2021-07-23T12:00",
                             "priority": "Very Important",
-                            "category": "Loan"
+                            "category": "Loan",
+                            "paymentMethod": "credit-card"
                         },
                         {
-                            "id": 3,
+                            "id": 9,
                             "name": "Planowanie kupna czegoś 1",
                             "description": "Planuje coś",
                             "type": "planning expense",
                             "price": 200,
-                            "pucharseDate": "2021-06-30T12:00",
+                            "pucharseDate": "2021-07-30T12:00",
                             "priority": "Very Important",
-                            "category": "Planning"
+                            "category": "Planning",
+                            "paymentMethod": null
                         },
                         {
-                            "id": 4,
-                            "name": "Kupienie 2",
-                            "description": "Kupienie w miesiacu 2",
+                            "id": 10,
+                            "name": "Kupienie 8",
+                            "description": "Kupienie w miesiacu 8",
                             "type": "expense",
                             "price": 5000,
-                            "pucharseDate": "2021-06-23T12:00",
+                            "pucharseDate": "2021-07-25T12:00",
                             "priority": "Important",
-                            "category": "House"
+                            "category": "House",
+                            "paymentMethod": "paypal"
                         },
                         {
-                            "id": 5,
-                            "name": "Kupienie 3",
-                            "description": "Kupienie w miesiacu 3",
+                            "id": 11,
+                            "name": "Kupienie 9",
+                            "description": "Kupienie w miesiacu 9",
                             "type": "expense",
                             "price": 1300,
-                            "pucharseDate": "2021-06-25T12:00",
+                            "pucharseDate": "2021-07-26T12:00",
                             "priority": "Important",
-                            "category": "House"
+                            "category": "House",
+                            "paymentMethod": "credit-card"
                         },
                         {
-                            "id": 6,
-                            "name": "Kupienie 4",
-                            "description": "Kupienie w miesiacu 4",
+                            "id": 12,
+                            "name": "Kupienie 10",
+                            "description": "Kupienie w miesiacu 10",
                             "type": "expense",
                             "price": 2500,
-                            "pucharseDate": "2021-06-30T12:00",
+                            "pucharseDate": "2021-07-30T12:00",
                             "priority": "Important",
-                            "category": "House"
+                            "category": "House",
+                            "paymentMethod": "paypal"
                         }
                     ]
                 },
                 {
-                    "range": "05.2021",
+                    "range": "06.2021",
                     "totalBudget": 5000,
                     "monthBudgetItems": [
                         {
@@ -304,7 +377,8 @@
                             "price": 1500,
                             "pucharseDate": "2021-06-23T12:00",
                             "priority": "Very Important",
-                            "category": "Bills"
+                            "category": "Bills",
+                            "paymentMethod": "credit-card"
                         },
                         {
                             "id": 1,
@@ -314,7 +388,8 @@
                             "price": 800,
                             "pucharseDate": "2021-06-18T12:00",
                             "priority": "Important",
-                            "category": "House"
+                            "category": "House",
+                            "paymentMethod": "cash"
                         },
                         {
                             "id": 2,
@@ -324,7 +399,8 @@
                             "price": 1500,
                             "pucharseDate": "2021-06-23T12:00",
                             "priority": "Very Important",
-                            "category": "Loan"
+                            "category": "Loan",
+                            "paymentMethod": "cash"
                         },
                         {
                             "id": 3,
@@ -334,7 +410,8 @@
                             "price": 200,
                             "pucharseDate": "2021-06-30T12:00",
                             "priority": "Very Important",
-                            "category": "Planning"
+                            "category": "Planning",
+                            "paymentMethod": "paypal"
                         }
                     ]
                 }

@@ -103,7 +103,8 @@ export interface MonthBudgetItem {
     price: number,
     pucharseDate: string,
     priority: CategoryAndPriority,
-    category: MoneyCategory
+    category: MoneyCategory,
+    paymentMethod: PaymentMethod
 }
 
 export enum MoneyDestination {
@@ -118,6 +119,13 @@ export enum MoneyCategory {
     LOAN = "Loan",
     PLANNING = "Planning"
 }
+
+export enum PaymentMethod {
+    CASH = "cash",
+    CREDIT_CARD = "credit-card",
+    PAYPAL = "paypal"
+}
+
 export interface ChartsData {
     chartsList: ChartItem[]
 }

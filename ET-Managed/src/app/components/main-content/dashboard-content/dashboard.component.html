@@ -11,7 +11,7 @@
                 <p class="stats_item__single  stats_item--title">Done tasks</p>
             </div>
             <div class="stats_item">
-                <p class="stats_item__single  stats_item--count stats_item--expenses">{{ (totalExpensesInMonth | async) ? (totalExpensesInMonth | async) : 0}}</p> 
+                <p class="stats_item__single  stats_item--count stats_item--expenses">{{ (totalExpensesInMonth | async) + ' zł' ? (totalExpensesInMonth | async) + ' zł' : 0}}</p> 
                 <p class="stats_item__single  stats_item--title">Total expenses</p>
             </div>
             <div class="stats_item stats_item--planning">
