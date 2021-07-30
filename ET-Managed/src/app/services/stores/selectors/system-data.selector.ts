@@ -1,9 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as models from '../types/systemData.model';
- 
+import {CircularGaugeChartModel} from '../../../components/models/circular-gauge-chart.model';
+import {PaymentMethod} from '../types/systemData.model';
+
 
 const selectSystemDataState = createFeatureSelector<any, models.SystemData>('system-data');
- 
+
 export const selectCurrentUser = createSelector<any, models.SystemData, models.LoggedUser> (
     selectSystemDataState,
     (state: models.SystemData) => state.loggedUser
@@ -27,17 +29,17 @@ export const selectNavigationItemById = createSelector<any, number, models.Navig
 export const selectSystemInfo = createSelector<any, models.ApplicationData, models.SystemInfo>(
     selectApplicationData,
     (applicationData: models.ApplicationData) => applicationData.systemInfo
-)
+);
 
 export const selectIsMenuExpanded = createSelector<any, models.ApplicationData, boolean>(
     selectApplicationData,
     (applicationData: models.ApplicationData) => applicationData.menuExpanded
-)
+);
 
 export const selectAvatarList = createSelector<any, models.ApplicationData, models.AvatarItem[]>(
     selectApplicationData,
     (applicationData: models.ApplicationData) => applicationData.avatarList
-)
+);
 
 export const selectNavigationItemByName = createSelector<any, string, models.NavigationItem[], models.NavigationItem> (
     selectNavigationList,
@@ -97,46 +99,46 @@ export const selectTasksList = createSelector<any, models.TaskData, models.Tasks
 export const selectActiveTasks = createSelector<any, models.TasksItem[], models.TasksItem[] | models.TasksItem>(
     selectTasksList,
     (taskList: models.TasksItem[]) => taskList.filter(task => task.isActive)
-)
+);
 
 export const selectDoneTasks = createSelector<any, models.TasksItem[], models.TasksItem[] | models.TasksItem>(
     selectTasksList,
     (taskList: models.TasksItem[]) => taskList.filter(task => task.isDone)
-)
+);
 
 export const selectTasksByPriority = createSelector<any, models.CategoryAndPriority, models.TasksItem[], models.TasksItem[]>(
     selectTasksList,
     (taskList: models.TasksItem[], categoryPriority: models.CategoryAndPriority) => taskList.filter(task => task.priority === categoryPriority)
-)
+);
 
 export const selectBudgetData = createSelector<any, models.UserData, models.BudgetData>(
     selectUserData,
-    (userData: models.UserData) => userData.budgetData 
+    (userData: models.UserData) => userData.budgetData
 );
 
 export const selectBudgetList = createSelector<any, models.BudgetData, models.BudgetItem[]>(
     selectBudgetData,
-    (budgetData: models.BudgetData) => budgetData?.budgetList 
+    (budgetData: models.BudgetData) => budgetData?.budgetList
 );
 
 export const selectBudgetItemByRange = createSelector<any, any, models.BudgetItem[], models.BudgetItem>(
     selectBudgetList,
     (budgetItems: models.BudgetItem[], props: any) => budgetItems?.find(item => item.range === props.rangeToSelect)
-)
+);
 
 export const selectBudgetItemsTotalIncomeByRange = createSelector<any, any, models.BudgetItem[], number>(
     selectBudgetList,
-    (budgetItems: models.BudgetItem[], props: any) => 
+    (budgetItems: models.BudgetItem[], props: any) =>
         selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.totalBudget
-)
+);
 
 export const selectBudgetItemMaxExpensesByRange  = createSelector<any, any, models.BudgetItem[], number>(
     selectBudgetList,
-    (budgetItems: models.BudgetItem[], props: any) => 
+    (budgetItems: models.BudgetItem[], props: any) =>
         selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.reduce(function(prev, current) {
-            return (prev.price > current.price) ? prev : current
+            return (prev.price > current.price) ? prev : current;
         }).price
-)
+);
 
 export const selectTotalSavingFromMonthByRange = createSelector<any, any, models.BudgetItem[], number>(
     selectBudgetList,
@@ -145,36 +147,36 @@ export const selectTotalSavingFromMonthByRange = createSelector<any, any, models
         const totalExpenses = selectBudgetItemTotalExpensesByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect});
         return totalBudget - totalExpenses;
     }
-)
+);
 
 export const selectBudgetItemsTotalExpenseWithSelectedMethodByRange = createSelector<any, any, models.BudgetItem[], number>(
     selectBudgetList,
-    (budgetItems: models.BudgetItem[], props: any) => 
+    (budgetItems: models.BudgetItem[], props: any) =>
         selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
         reduce((sum, { price, paymentMethod, type }) => paymentMethod === props.paymentMethod && type === models.MoneyDestination.EXPENSE ? sum + price : sum, 0)
-)
+);
 
 export const selectBudgetItemTotalExpensesByRange = createSelector<any, any, models.BudgetItem[], number>(
     selectBudgetList,
-    (budgetItems: models.BudgetItem[], props: any) => 
+    (budgetItems: models.BudgetItem[], props: any) =>
         selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
         reduce((sum, { price, type }) => type === models.MoneyDestination.EXPENSE ? sum + price : sum, 0)
-)
+);
 
 
 export const selectBudgetItemsMonthItemsByRange = createSelector<any, any, models.BudgetItem[], models.MonthBudgetItem[]>(
     selectBudgetList,
-    (budgetItems: models.BudgetItem[], props: any) => 
-     selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.filter(item => item.type === models.MoneyDestination.EXPENSE)      
-)
+    (budgetItems: models.BudgetItem[], props: any) =>
+     selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.filter(item => item.type === models.MoneyDestination.EXPENSE)
+);
 
 
 export const selectBudgetItemAllPlanningItemsByRange = createSelector<any, any, models.BudgetItem[], models.MonthBudgetItem[]>(
     selectBudgetList,
-    (budgetItems: models.BudgetItem[], props: any) => 
+    (budgetItems: models.BudgetItem[], props: any) =>
         selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
         filter(item => item.category === models.MoneyCategory.PLANNING)
-)
+);
 
 export const selectChartsData = createSelector<any, models.UserData, models.ChartsData>(
     selectUserData,
@@ -194,4 +196,26 @@ export const selectCalendarData = createSelector<any, models.UserData, models.Ca
 export const selectCalendarList = createSelector<any, models.CalendarData, models.CalendarItem[]>(
     selectCalendarData,
     (calendarData: models.CalendarData) => calendarData.calendarList
+);
+
+
+export const selectMethodsDataForCircularGaugeChartByRange = createSelector<any, any, models.BudgetItem[], CircularGaugeChartModel>(
+  selectBudgetList,
+  (budgetItems: models.BudgetItem[], props: any) => {
+
+    const creditCardPayments = selectBudgetItemsTotalExpenseWithSelectedMethodByRange.projector(budgetItems, {rangeToSelect: props.rangeValue, paymentMethod: PaymentMethod.CREDIT_CARD});
+    const paypalPayments =  selectBudgetItemsTotalExpenseWithSelectedMethodByRange.projector(budgetItems, {rangeToSelect: props.rangeValue, paymentMethod: PaymentMethod.PAYPAL});
+    const cashPayments =  selectBudgetItemsTotalExpenseWithSelectedMethodByRange.projector(budgetItems, {rangeToSelect: props.rangeValue, paymentMethod: PaymentMethod.CASH});
+
+    console.log(props)
+    console.log(budgetItems)
+    console.log(creditCardPayments)
+    console.log(paypalPayments)
+    console.log(cashPayments)
+
+    return {
+      series: [creditCardPayments, paypalPayments, cashPayments],
+      labels: ['a']
+    };
+    }
 );

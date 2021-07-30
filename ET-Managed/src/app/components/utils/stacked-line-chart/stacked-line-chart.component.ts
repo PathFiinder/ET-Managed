@@ -44,20 +44,19 @@ type ProceededData = {
 
 
 export class StackedLineChartComponent{
-  
+
   @Input() budgetItems: MonthBudgetItem[];
   public chartOptions: Partial<LineChartOptions>;
-  
+
   isChartAvailable: boolean = false;
 
   ngOnChanges() {
-   
+
     if(this.budgetItems) {
       const chartData: ProceededData = this.proceedData(this.budgetItems);
-      console.log(chartData)
       this.isChartAvailable = true;
       this.setChartOptions(chartData)
-      
+
     }
 
   }
@@ -81,7 +80,7 @@ export class StackedLineChartComponent{
           show: false
         }
       },
-      colors: ['#DCC1BB', '#80C12E', '#0CA0FA', '#7B74A5', '#FD1092', '#7EDABD', '#D3DE2F'],
+      colors: ['#42AEA7'],
       annotations: {
         xaxis: [
           this.generateAnnotationObject(chartData)
@@ -124,7 +123,7 @@ export class StackedLineChartComponent{
       dates: [],
       prices: []
     }
-    
+
     budgetItems?.forEach(item => {
       const pucharseDate = item.pucharseDate.slice(0, item.pucharseDate.indexOf('T'));
       if(proceededData.dates?.length === 0 || proceededData?.dates?.filter(data => data === pucharseDate).length == 0) {
@@ -139,7 +138,7 @@ export class StackedLineChartComponent{
         proceededData.prices[indexOfElement] = proceededData.prices[indexOfElement] + item.price
         proceededData.annotationLabels[indexOfElement] = `${proceededData.annotationLabels[indexOfElement]}, ${item.name}`;
 
-      } 
+      }
     })
 
     return proceededData;

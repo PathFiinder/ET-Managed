@@ -27,6 +27,7 @@ import { systemDataReducer } from './services/stores/reducers/system-data.reduce
 import { SystemDataEffects } from './services/stores/effects/systame-data.effects';
 import { DashboardReportsComponent } from './components/main-content/dashboard-content/dashboard-reports/dashboard-reports.component';
 import { StackedLineChartComponent } from './components/utils/stacked-line-chart/stacked-line-chart.component';
+import { CircularGaugeChartComponent } from './components/utils/circular-gauge-chart/circular-gauge-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -51,7 +52,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     NotFoundContentComponent,
     SplashScreenComponent,
     DashboardReportsComponent,
-    StackedLineChartComponent
+    StackedLineChartComponent,
+    CircularGaugeChartComponent
   ],
   imports: [
     BrowserModule,
