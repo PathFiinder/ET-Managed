@@ -1,0 +1,14 @@
+<div id="donut-chart">
+  <ng-container *ngIf="isChartAvailable">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [plotOptions]="chartOptions.plotOptions"
+      [labels]="chartOptions.labels"
+      [legend]="chartOptions.legend"
+      [colors]="chartOptions.colors"
+      [dataLabels]="chartOptions.dataLabels"
+      [title]="chartOptions.title"
+    ></apx-chart>
+  </ng-container>
+</div>

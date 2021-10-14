@@ -13,14 +13,15 @@ export class DashboardComponent implements OnInit {
 
   date = new Date();
   month = this.date.getMonth() + 1;
-  range = `${this.month < 10 ? '0'  + this.month : this.month}.${this.date.getFullYear()}`
+  // range = `${this.month < 10 ? '0'  + this.month : this.month}.${this.date.getFullYear()}`
+  range = "07.2021";
 
   activeTasks: Observable<TasksItem | TasksItem[]> = this.store.select(selectActiveTasks);
   doneTasks: Observable<TasksItem | TasksItem[]> = this.store.select(selectDoneTasks);
   totalExpensesInMonth: Observable<number> = this.store.select(selectBudgetItemTotalExpensesByRange, {rangeToSelect: this.range})
   totalPlannedItems: Observable<MonthBudgetItem[]> = this.store.select(selectBudgetItemAllPlanningItemsByRange,  {rangeToSelect: this.range})
 
-  constructor(private store: Store) { 
+  constructor(private store: Store) {
 
   }
 

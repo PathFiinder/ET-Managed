@@ -1,7 +1,8 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
 import * as models from '../types/systemData.model';
-import {CircularGaugeChartModel} from '../../../components/models/circular-gauge-chart.model';
 import {PaymentMethod} from '../types/systemData.model';
+import {ApexDataChartModel} from '../../../components/models/apex-data-chart.model';
+import {getCircularGaugeDataFromSelector} from "../utils";
 
 
 const selectSystemDataState = createFeatureSelector<any, models.SystemData>('system-data');
@@ -152,9 +153,12 @@ export const selectTotalSavingFromMonthByRange = createSelector<any, any, models
 export const selectBudgetItemsTotalExpenseWithSelectedMethodByRange = createSelector<any, any, models.BudgetItem[], number>(
     selectBudgetList,
     (budgetItems: models.BudgetItem[], props: any) =>
-        selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
-        reduce((sum, { price, paymentMethod, type }) => paymentMethod === props.paymentMethod && type === models.MoneyDestination.EXPENSE ? sum + price : sum, 0)
-);
+      selectBudgetItemByRange.projector(budgetItems, {rangeToSelect: props.rangeToSelect})?.monthBudgetItems.reduce((sum, {
+        price,
+        paymentMethod,
+        type
+      }) => paymentMethod === props.paymentMethod && type === models.MoneyDestination.EXPENSE ? sum + price : sum, 0)
+    );
 
 export const selectBudgetItemTotalExpensesByRange = createSelector<any, any, models.BudgetItem[], number>(
     selectBudgetList,
@@ -199,23 +203,28 @@ export const selectCalendarList = createSelector<any, models.CalendarData, model
 );
 
 
-export const selectMethodsDataForCircularGaugeChartByRange = createSelector<any, any, models.BudgetItem[], CircularGaugeChartModel>(
+export const selectMethodsPaymentDataForCircularGaugeChartByRange = createSelector<any, any, models.BudgetItem[], ApexDataChartModel>(
   selectBudgetList,
   (budgetItems: models.BudgetItem[], props: any) => {
 
-    const creditCardPayments = selectBudgetItemsTotalExpenseWithSelectedMethodByRange.projector(budgetItems, {rangeToSelect: props.rangeValue, paymentMethod: PaymentMethod.CREDIT_CARD});
-    const paypalPayments =  selectBudgetItemsTotalExpenseWithSelectedMethodByRange.projector(budgetItems, {rangeToSelect: props.rangeValue, paymentMethod: PaymentMethod.PAYPAL});
-    const cashPayments =  selectBudgetItemsTotalExpenseWithSelectedMethodByRange.projector(budgetItems, {rangeToSelect: props.rangeValue, paymentMethod: PaymentMethod.CASH});
+    const paypalExpenses = selectBudgetItemsTotalExpenseWithSelectedMethodByRange.projector(budgetItems, {
+      rangeToSelect: props.rangeToSelect,
+      paymentMethod: PaymentMethod.PAYPAL
+    });
+    const creditCardExpenses = selectBudgetItemsTotalExpenseWithSelectedMethodByRange.projector(budgetItems, {
+      rangeToSelect: props.rangeToSelect,
+      paymentMethod: PaymentMethod.CREDIT_CARD
+    });
+    const cashExpenses = selectBudgetItemsTotalExpenseWithSelectedMethodByRange.projector(budgetItems, {
+      rangeToSelect: props.rangeToSelect,
+      paymentMethod: PaymentMethod.CASH
+    });
 
-    console.log(props)
-    console.log(budgetItems)
-    console.log(creditCardPayments)
-    console.log(paypalPayments)
-    console.log(cashPayments)
+    const circularGaugeChartData = getCircularGaugeDataFromSelector([paypalExpenses, creditCardExpenses, cashExpenses],
+      [PaymentMethod.PAYPAL, PaymentMethod.CREDIT_CARD, PaymentMethod.CASH]);
 
-    return {
-      series: [creditCardPayments, paypalPayments, cashPayments],
-      labels: ['a']
-    };
-    }
+    return circularGaugeChartData.series.length === 0 ? null : circularGaugeChartData;
+  }
 );
+
+

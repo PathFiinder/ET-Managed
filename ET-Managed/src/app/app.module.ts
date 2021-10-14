@@ -33,6 +33,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { DonutChartComponent } from './components/utils/donut-chart/donut-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     SplashScreenComponent,
     DashboardReportsComponent,
     StackedLineChartComponent,
-    CircularGaugeChartComponent
+    CircularGaugeChartComponent,
+    DonutChartComponent
   ],
   imports: [
     BrowserModule,

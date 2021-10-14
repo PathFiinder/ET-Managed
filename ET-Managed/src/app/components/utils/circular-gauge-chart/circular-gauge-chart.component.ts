@@ -10,7 +10,7 @@ import {
   ChartComponent
 } from 'ng-apexcharts';
 import {MonthBudgetItem} from '../../../services/stores/types/systemData.model';
-import {CircularGaugeChartModel} from '../../models/circular-gauge-chart.model';
+import {ApexDataChartModel} from '../../models/apex-data-chart.model';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -30,14 +30,13 @@ export type ChartOptions = {
 })
 export class CircularGaugeChartComponent {
 
-  @Input() data?: CircularGaugeChartModel ;
+  @Input() data?: ApexDataChartModel ;
   @ViewChild('circular-gauge-chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
   isChartAvailable: boolean = false;
 
   ngOnChanges() {
-
-    if (this.data.series && this.data.labels) {
+    if (this.data !== null) {
       this.isChartAvailable = true;
       this.chartOptions = this.setChartOptions();
 
@@ -46,7 +45,7 @@ export class CircularGaugeChartComponent {
 
   private setChartOptions(): ChartOptions {
     return {
-      series: this.data.series,
+      series:  this.data.series,
       chart: {
         height: 320,
         type: 'radialBar'

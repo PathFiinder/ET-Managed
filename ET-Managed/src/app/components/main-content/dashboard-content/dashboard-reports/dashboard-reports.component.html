@@ -19,7 +19,8 @@
         </div>
     </div>
     <div class="tasks-report__item tasks-report__item--second">
-        <app-circular-gauge-chart [data]="(circularGaugeChartsData | async)" class="report-item-gauge-chart"></app-circular-gauge-chart>
+<!--        <app-circular-gauge-chart [data]="(circularGaugeChartsData | async)" class="report-item-gauge-chart"></app-circular-gauge-chart>-->
+        <app-donut-chart [data]="(donutChartsData | async)" class="report-item-donut-chart"></app-donut-chart>
     </div>
     <div class="tasks-report__item tasks-report__item--third">
         Third graph

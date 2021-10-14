@@ -1,4 +1,4 @@
-export interface CircularGaugeChartModel{
+export interface ApexDataChartModel {
   series: number[];
   labels: string[];
 }
