@@ -4,31 +4,27 @@ import { Observable } from 'rxjs';
 import { changeActiveNavigationItemById } from 'src/app/services/stores/actions/system-data.actions';
 import { selectActiveTasks,  selectDoneTasks, selectBudgetItemTotalExpensesByRange, selectBudgetItemAllPlanningItemsByRange} from 'src/app/services/stores/selectors/system-data.selector';
 import { MonthBudgetItem, TasksItem } from 'src/app/services/stores/types/systemData.model';
+import {RangeService} from '../../../shared/range-service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.sass']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  date = new Date();
-  month = this.date.getMonth() + 1;
-  // range = `${this.month < 10 ? '0'  + this.month : this.month}.${this.date.getFullYear()}`
-  range = "07.2021";
+  range: string = this.rangeService.getDateRange();
 
   activeTasks: Observable<TasksItem | TasksItem[]> = this.store.select(selectActiveTasks);
   doneTasks: Observable<TasksItem | TasksItem[]> = this.store.select(selectDoneTasks);
-  totalExpensesInMonth: Observable<number> = this.store.select(selectBudgetItemTotalExpensesByRange, {rangeToSelect: this.range})
-  totalPlannedItems: Observable<MonthBudgetItem[]> = this.store.select(selectBudgetItemAllPlanningItemsByRange,  {rangeToSelect: this.range})
+  totalExpensesInMonth: Observable<number> = this.store.select(selectBudgetItemTotalExpensesByRange, {rangeToSelect: this.range});
+  totalPlannedItems: Observable<MonthBudgetItem[]> = this.store.select(selectBudgetItemAllPlanningItemsByRange,  {rangeToSelect: this.range});
 
-  constructor(private store: Store) {
-
+  constructor(private store: Store,
+              private rangeService: RangeService) {
   }
 
-  ngOnInit(): void {
-  }
 
   public onViewReportsClick(): void {
-    this.store.dispatch(changeActiveNavigationItemById({itemId: 3}))
+    this.store.dispatch(changeActiveNavigationItemById({itemId: 3}));
   }
 }

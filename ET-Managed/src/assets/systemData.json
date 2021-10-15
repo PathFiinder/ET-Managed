@@ -43,7 +43,7 @@
                 "iconClass": "far fa-calendar",
                 "isActive": false,
                 "path": "/calendar"
-            } 
+            }
         ],
         "systemInfo": {
             "title": "ET MANAGED",
@@ -305,7 +305,7 @@
                             "price": 800,
                             "pucharseDate": "2021-07-24T12:00",
                             "priority": "Important",
-                            "category": "House",
+                            "category": "Other",
                             "paymentMethod": "cash"
                         },
                         {
@@ -338,7 +338,7 @@
                             "price": 5000,
                             "pucharseDate": "2021-07-25T12:00",
                             "priority": "Important",
-                            "category": "House",
+                            "category": "Loan",
                             "paymentMethod": "paypal"
                         },
                         {
@@ -362,7 +362,18 @@
                             "priority": "Important",
                             "category": "House",
                             "paymentMethod": "paypal"
-                        }
+                        },
+                      {
+                        "id": 13,
+                        "name": "Kupienie 11",
+                        "description": "Kupienie w miesiacu 11",
+                        "type": "expense",
+                        "price": 20,
+                        "pucharseDate": "2021-07-30T14:00",
+                        "priority": "Important",
+                        "category": "House",
+                        "paymentMethod": "paypal"
+                      }
                     ]
                 },
                 {
@@ -388,7 +399,7 @@
                             "price": 800,
                             "pucharseDate": "2021-06-18T12:00",
                             "priority": "Important",
-                            "category": "House",
+                            "category": "Other",
                             "paymentMethod": "cash"
                         },
                         {

@@ -12,17 +12,20 @@
                     <p class="label-single-item--desc">Greatest Expense</p>
                 </div>
                 <div class="report-item-label_single-item label-single-item">
-                    <p class="label-single-item--number">{{(savingsFromMonth | async) + ' zł' ? (savingsFromMonth | async) + ' zł' : 0}}</p>
-                    <p class="label-single-item--desc">Able to spend</p>
+                    <p class="label-single-item--number">{{(totalExpenses | async) + ' zł' ? (totalExpenses | async) + ' zł' : 0}}</p>
+                    <p class="label-single-item--desc">Total expenses</p>
                 </div>
+              <div class="report-item-label_single-item label-single-item">
+                <p class="label-single-item--number">{{(savingsFromMonth | async) + ' zł' ? (savingsFromMonth | async) + ' zł' : 0}}</p>
+                <p class="label-single-item--desc">Able to spend</p>
+              </div>
             </div>
         </div>
     </div>
     <div class="tasks-report__item tasks-report__item--second">
-<!--        <app-circular-gauge-chart [data]="(circularGaugeChartsData | async)" class="report-item-gauge-chart"></app-circular-gauge-chart>-->
-        <app-donut-chart [data]="(donutChartsData | async)" class="report-item-donut-chart"></app-donut-chart>
+        <app-donut-chart [data]="(donutChartData | async)" class="report-item-donut-chart"></app-donut-chart>
     </div>
     <div class="tasks-report__item tasks-report__item--third">
-        Third graph
+      <app-radar-chart [data]="(radarChartData | async)" class="report-item-radar-chart"></app-radar-chart>
     </div>
 </div>

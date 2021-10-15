@@ -1,0 +1,43 @@
+.budget-container
+  height: 100%
+  width: 100%
+  background-color: #E7EBEE
+  display: flex
+  flex-direction: column
+  .budget-header
+      flex-basis: 120px
+      width: 100%
+      background-color: white
+      padding-top: 30px
+      padding-left: 30px
+      position: relative
+  .budget-items-container
+    flex-grow: 1
+    width: 100%
+    padding: 20px
+    background-color: #E7EBEE
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    .budget-insert-panel
+      flex-basis: 100%
+      flex-wrap: wrap
+      height: 45%
+      background-color: white
+    .budget-items
+      flex-basis: 100%
+      height: calc(54% - 20px)
+      overflow: hidden
+      display: flex
+      flex-direction: row
+      margin-top: 20px
+      .budget-item
+        flex-basis: calc(50% - 10px)
+        height: 100%
+        background-color: white
+      .budget-list
+        margin-right: 10px
+      .budget-chart
+        margin-left: 10px
+
+

@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, combineLatest  } from 'rxjs';
+import { Observable  } from 'rxjs';
 import {
   selectBudgetItemMaxExpensesByRange,
-  selectBudgetItemsMonthItemsByRange,
+  selectBudgetItemsMonthItemsExpensesByRange, selectBudgetItemsTotalExpensesByRange,
   selectBudgetItemsTotalExpenseWithSelectedMethodByRange,
-  selectBudgetItemsTotalIncomeByRange,
+  selectBudgetItemsTotalIncomeByRange, selectExpensesCategoriesDataForRadarChartByRange,
   selectMethodsPaymentDataForCircularGaugeChartByRange,
   selectTotalSavingFromMonthByRange
 } from 'src/app/services/stores/selectors/system-data.selector';
@@ -17,48 +17,35 @@ import {ApexDataChartModel} from '../../../models/apex-data-chart.model';
   templateUrl: './dashboard-reports.component.html',
   styleUrls: ['./dashboard-reports.component.sass']
 })
-export class DashboardReportsComponent implements OnInit {
+export class DashboardReportsComponent implements OnChanges {
 
 
   @Input() rangeValue: string;
 
   allBudgetItems: Observable<MonthBudgetItem[]>;
   totalIncome: Observable<number>;
+  totalExpenses: Observable<number>;
   creditCardPayments: Observable<number>;
-  // paypalPayments: Observable<number>;
-  // cashPayments: Observable<number>;
   greatestExpense: Observable<number>;
   savingsFromMonth: Observable<number>;
-  donutChartsData: Observable<ApexDataChartModel>;
-
-
-
-  ngOnChanges() {
-    this.allBudgetItems = this.store.select(selectBudgetItemsMonthItemsByRange, {rangeToSelect: this.rangeValue});
-    this.totalIncome = this.store.select(selectBudgetItemsTotalIncomeByRange, {rangeToSelect: this.rangeValue});
-    this.greatestExpense = this.store.select(selectBudgetItemMaxExpensesByRange, {rangeToSelect: this.rangeValue});
-    this.savingsFromMonth = this.store.select(selectTotalSavingFromMonthByRange, {rangeToSelect: this.rangeValue});
-
-    this.creditCardPayments =  this.store.select(selectBudgetItemsTotalExpenseWithSelectedMethodByRange, {rangeToSelect: this.rangeValue, paymentMethod: PaymentMethod.CREDIT_CARD})
-    // this.paypalPayments =  this.store.select(selectBudgetItemsTotalExpenseWithSelectedMethodByRange, {rangeToSelect: this.rangeValue, paymentMethod: PaymentMethod.PAYPAL})
-    // this.cashPayments =  this.store.select(selectBudgetItemsTotalExpenseWithSelectedMethodByRange, {rangeToSelect: this.rangeValue, paymentMethod: PaymentMethod.CASH})
-    this.donutChartsData = this.store.select(selectMethodsPaymentDataForCircularGaugeChartByRange, {rangeToSelect: this.rangeValue});
-
-  }
-
-
+  donutChartData: Observable<ApexDataChartModel>;
+  radarChartData: Observable<number[]>;
 
   constructor(private store: Store) {
   }
 
+  ngOnChanges(): void  {
 
+    this.allBudgetItems = this.store.select(selectBudgetItemsMonthItemsExpensesByRange, {rangeToSelect: this.rangeValue});
+    this.totalIncome = this.store.select(selectBudgetItemsTotalIncomeByRange, {rangeToSelect: this.rangeValue});
+    this.totalExpenses = this.store.select(selectBudgetItemsTotalExpensesByRange, {rangeToSelect: this.rangeValue});
+    this.greatestExpense = this.store.select(selectBudgetItemMaxExpensesByRange, {rangeToSelect: this.rangeValue});
+    this.savingsFromMonth = this.store.select(selectTotalSavingFromMonthByRange, {rangeToSelect: this.rangeValue});
 
-
-
-  ngOnInit(): void {
-
+    this.creditCardPayments = this.store.select(selectBudgetItemsTotalExpenseWithSelectedMethodByRange,
+      {rangeToSelect: this.rangeValue, paymentMethod: PaymentMethod.CREDIT_CARD});
+    this.donutChartData = this.store.select(selectMethodsPaymentDataForCircularGaugeChartByRange, {rangeToSelect: this.rangeValue});
+    this.radarChartData = this.store.select(selectExpensesCategoriesDataForRadarChartByRange, {rangeToSelect: this.rangeValue});
   }
-
-
 
 }

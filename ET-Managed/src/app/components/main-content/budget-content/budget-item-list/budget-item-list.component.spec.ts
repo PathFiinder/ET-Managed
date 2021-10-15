@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CircularGaugeChartComponent } from './circular-gauge-chart.component';
+import { BudgetItemListComponent } from './budget-item-list.component';
 
-describe('CircularGaugeChartComponent', () => {
-  let component: CircularGaugeChartComponent;
-  let fixture: ComponentFixture<CircularGaugeChartComponent>;
+describe('BudgetItemListComponent', () => {
+  let component: BudgetItemListComponent;
+  let fixture: ComponentFixture<BudgetItemListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CircularGaugeChartComponent ]
+      declarations: [ BudgetItemListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CircularGaugeChartComponent);
+    fixture = TestBed.createComponent(BudgetItemListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

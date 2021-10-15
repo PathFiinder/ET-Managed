@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'reports', component: ReportsComponent },
   { path: 'calendar', component: CalendarContentComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  { path: '**', component: NotFoundContentComponent },  
+  { path: '**', component: NotFoundContentComponent }
 ];
 
 @NgModule({

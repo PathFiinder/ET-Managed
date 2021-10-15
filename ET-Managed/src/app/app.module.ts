@@ -27,13 +27,17 @@ import { systemDataReducer } from './services/stores/reducers/system-data.reduce
 import { SystemDataEffects } from './services/stores/effects/systame-data.effects';
 import { DashboardReportsComponent } from './components/main-content/dashboard-content/dashboard-reports/dashboard-reports.component';
 import { StackedLineChartComponent } from './components/utils/stacked-line-chart/stacked-line-chart.component';
-import { CircularGaugeChartComponent } from './components/utils/circular-gauge-chart/circular-gauge-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { DonutChartComponent } from './components/utils/donut-chart/donut-chart.component';
+import { RadarChartComponent } from './components/utils/radar-chart/radar-chart.component';
+import { BudgetHeaderComponent } from './components/main-content/budget-content/budget-header/budget-header.component';
+import { BudgetInsertPanelComponent } from './components/main-content/budget-content/budget-insert-panel/budget-insert-panel.component';
+import { BudgetItemListComponent } from './components/main-content/budget-content/budget-item-list/budget-item-list.component';
+import {RangeService} from './shared/range-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,8 +58,11 @@ import { DonutChartComponent } from './components/utils/donut-chart/donut-chart.
     SplashScreenComponent,
     DashboardReportsComponent,
     StackedLineChartComponent,
-    CircularGaugeChartComponent,
-    DonutChartComponent
+    DonutChartComponent,
+    RadarChartComponent,
+    BudgetHeaderComponent,
+    BudgetInsertPanelComponent,
+    BudgetItemListComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +70,7 @@ import { DonutChartComponent } from './components/utils/donut-chart/donut-chart.
     StoreModule.forRoot({'system-data': systemDataReducer}),
     EffectsModule.forRoot([SystemDataEffects]),
     StoreDevtoolsModule.instrument({
-        maxAge: 25, 
+        maxAge: 25,
         logOnly: environment.production
       }),
     HttpClientModule,
@@ -73,7 +80,7 @@ import { DonutChartComponent } from './components/utils/donut-chart/donut-chart.
     ChartsModule,
     NgApexchartsModule,
   ],
-  providers: [SplashScreenStateService],
+  providers: [SplashScreenStateService, RangeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

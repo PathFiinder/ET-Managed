@@ -1,15 +1,12 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-
+import {Component, Input, OnChanges, ViewChild} from '@angular/core';
 import {
   ApexNonAxisChartSeries,
   ApexPlotOptions,
   ApexChart,
   ApexLegend,
-  ApexResponsive,
-  ChartComponent
+  ChartComponent, ApexTitleSubtitle
 } from 'ng-apexcharts';
-import {MonthBudgetItem} from '../../../services/stores/types/systemData.model';
-import {ApexDataChartModel} from "../../models/apex-data-chart.model";
+import {ApexDataChartModel} from '../../models/apex-data-chart.model';
 import {ApexDataLabels} from 'ng-apexcharts/lib/model/apex-types';
 
 export type ChartOptions = {
@@ -23,26 +20,20 @@ export type ChartOptions = {
   plotOptions: ApexPlotOptions;
 };
 
-
-
-
 @Component({
   selector: 'app-donut-chart',
   templateUrl: './donut-chart.component.html',
   styleUrls: ['./donut-chart.component.sass']
 })
-export class DonutChartComponent{
+export class DonutChartComponent implements OnChanges{
 
   @Input() data?: ApexDataChartModel ;
   @ViewChild('donut-chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
-  isChartAvailable: boolean = false;
+  isChartAvailable = false;
   colorPalette = ['#00D8B6', '#008FFB',  '#FEB019', '#FF4560', '#775DD0']
 
-  constructor() { }
-
-
-  ngOnChanges() {
+  ngOnChanges(): void {
     if (this.data !== null) {
     this.isChartAvailable = true;
     this.chartOptions = this.setChartOptions();
@@ -82,6 +73,7 @@ export class DonutChartComponent{
       legend: {
         position: 'left',
         offsetY: 80,
+        fontSize: '16px',
         formatter(seriesName, opts) {
           return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex];
         },

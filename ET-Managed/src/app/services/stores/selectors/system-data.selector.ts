@@ -1,8 +1,8 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import * as models from '../types/systemData.model';
-import {PaymentMethod} from '../types/systemData.model';
+import {ExpenseIncomeCategory, MoneyDestination, PaymentMethod} from '../types/systemData.model';
 import {ApexDataChartModel} from '../../../components/models/apex-data-chart.model';
-import {getCircularGaugeDataFromSelector} from "../utils";
+import {getCircularGaugeDataFromSelector, getRadarChatDataFromSelector} from '../utils';
 
 
 const selectSystemDataState = createFeatureSelector<any, models.SystemData>('system-data');
@@ -133,10 +133,25 @@ export const selectBudgetItemsTotalIncomeByRange = createSelector<any, any, mode
         selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.totalBudget
 );
 
+export const selectBudgetItemsTotalExpensesByRange = createSelector<any, any, models.BudgetItem[], number>(
+  selectBudgetList,
+  (budgetItems: models.BudgetItem[], props: any) => {
+    const monthBudgetItems = selectBudgetItemByRange.projector(budgetItems, {rangeToSelect: props.rangeToSelect})?.
+    monthBudgetItems.filter(item => item.type === MoneyDestination.EXPENSE);
+    return monthBudgetItems?.reduce(
+      (prev, current) =>
+        prev + current.price || 0,
+      0
+    );
+  }
+);
+
+
 export const selectBudgetItemMaxExpensesByRange  = createSelector<any, any, models.BudgetItem[], number>(
     selectBudgetList,
     (budgetItems: models.BudgetItem[], props: any) =>
-        selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.reduce(function(prev, current) {
+        selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.
+        monthBudgetItems.reduce(function(prev, current) {
             return (prev.price > current.price) ? prev : current;
         }).price
 );
@@ -168,10 +183,20 @@ export const selectBudgetItemTotalExpensesByRange = createSelector<any, any, mod
 );
 
 
-export const selectBudgetItemsMonthItemsByRange = createSelector<any, any, models.BudgetItem[], models.MonthBudgetItem[]>(
+export const selectBudgetItemsMonthItemsExpensesByRange = createSelector<any, any, models.BudgetItem[], models.MonthBudgetItem[]>(
     selectBudgetList,
     (budgetItems: models.BudgetItem[], props: any) =>
-     selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.filter(item => item.type === models.MoneyDestination.EXPENSE)
+     selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
+      filter(item => item.type === models.MoneyDestination.EXPENSE)
+);
+
+export const selectBudgetItemsMonthItemsTotalNumber = createSelector<any, any, models.BudgetItem[], number>(
+  selectBudgetList,
+  (budgetItems: models.BudgetItem[], props: any) => {
+    const c = selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.length;
+    console.log(c)
+    return c;
+  }
 );
 
 
@@ -179,7 +204,7 @@ export const selectBudgetItemAllPlanningItemsByRange = createSelector<any, any, 
     selectBudgetList,
     (budgetItems: models.BudgetItem[], props: any) =>
         selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.
-        filter(item => item.category === models.MoneyCategory.PLANNING)
+        filter(item => item.category === models.ExpenseIncomeCategory.PLANNING)
 );
 
 export const selectChartsData = createSelector<any, models.UserData, models.ChartsData>(
@@ -225,6 +250,17 @@ export const selectMethodsPaymentDataForCircularGaugeChartByRange = createSelect
 
     return circularGaugeChartData.series.length === 0 ? null : circularGaugeChartData;
   }
-);
+  );
+
+export const selectExpensesCategoriesDataForRadarChartByRange = createSelector<any, any, models.BudgetItem[], number[]>(
+  selectBudgetList,
+  (budgetItem: models.BudgetItem[], props: any) => {
+    const expensesItems = selectBudgetItemsMonthItemsExpensesByRange.projector(budgetItem, {
+      rangeToSelect: props.rangeToSelect,
+    });
+
+    return getRadarChatDataFromSelector(expensesItems);
+  }
+  );
 
 

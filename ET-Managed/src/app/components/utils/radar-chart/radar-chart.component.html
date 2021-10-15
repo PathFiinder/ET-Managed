@@ -1,0 +1,14 @@
+<div id="radar-chart">
+  <ng-container *ngIf="isChartAvailable">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [title]="chartOptions.title"
+      [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions">
+<!--      [legend]="chartOptions.legend"-->
+<!--      [colors]="chartOptions.colors"-->
+    </apx-chart>
+  </ng-container>
+</div>

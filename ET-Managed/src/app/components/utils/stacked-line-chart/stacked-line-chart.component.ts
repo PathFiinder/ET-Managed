@@ -1,6 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import * as ApexCharts from 'apexcharts';
-
+import { Component, Input, OnChanges} from '@angular/core';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -9,8 +7,8 @@ import {
   ApexTitleSubtitle,
   ApexStroke,
   ApexGrid,
-  ApexAnnotations
-} from "ng-apexcharts";
+  ApexAnnotations, ApexFill
+} from 'ng-apexcharts';
 import { MonthBudgetItem } from 'src/app/services/stores/types/systemData.model';
 
 
@@ -33,7 +31,7 @@ type ProceededData = {
   prices: number[],
   dates: string[],
   annotationLabels: string[];
-}
+};
 
 @Component({
   selector: 'app-stacked-line-chart',
@@ -43,19 +41,19 @@ type ProceededData = {
 
 
 
-export class StackedLineChartComponent{
+export class StackedLineChartComponent implements OnChanges{
 
   @Input() budgetItems: MonthBudgetItem[];
   public chartOptions: Partial<LineChartOptions>;
 
-  isChartAvailable: boolean = false;
+  isChartAvailable = false;
 
-  ngOnChanges() {
+  ngOnChanges(): void {
 
-    if(this.budgetItems) {
+    if (this.budgetItems) {
       const chartData: ProceededData = this.proceedData(this.budgetItems);
       this.isChartAvailable = true;
-      this.setChartOptions(chartData)
+      this.setChartOptions(chartData);
 
     }
 
@@ -65,14 +63,14 @@ export class StackedLineChartComponent{
     this.chartOptions = {
       series: [
         {
-          name: "Prices",
+          name: 'Prices',
           data: chartData?.prices
         }
       ],
       chart: {
         height: 370,
         width: 1250,
-        type: "line",
+        type: 'line',
         zoom: {
           enabled: false
         },
@@ -90,7 +88,7 @@ export class StackedLineChartComponent{
         enabled: true
       },
       stroke: {
-        curve: "straight"
+        curve: 'straight'
       },
       grid: {
         padding: {
@@ -99,8 +97,8 @@ export class StackedLineChartComponent{
         }
       },
       title: {
-        text: "Total expenses",
-        align: "left",
+        text: 'Total expenses',
+        align: 'left',
         style: {
           fontSize: '20px',
           color: '#ADAEB2',
@@ -109,7 +107,7 @@ export class StackedLineChartComponent{
       },
       labels: chartData?.dates,
       xaxis: {
-        type: "datetime"
+        type: 'datetime'
       },
       fill: {
         colors: ['#42AEA7']
@@ -122,11 +120,11 @@ export class StackedLineChartComponent{
       annotationLabels: [],
       dates: [],
       prices: []
-    }
+    };
 
     budgetItems?.forEach(item => {
       const pucharseDate = item.pucharseDate.slice(0, item.pucharseDate.indexOf('T'));
-      if(proceededData.dates?.length === 0 || proceededData?.dates?.filter(data => data === pucharseDate).length == 0) {
+      if (proceededData.dates?.length === 0 || proceededData?.dates?.filter(data => data === pucharseDate).length == 0) {
 
         proceededData.dates.push(pucharseDate);
         proceededData.prices.push(item.price);
@@ -135,34 +133,34 @@ export class StackedLineChartComponent{
       } else {
 
         const indexOfElement = proceededData.dates.indexOf(pucharseDate);
-        proceededData.prices[indexOfElement] = proceededData.prices[indexOfElement] + item.price
+        proceededData.prices[indexOfElement] = proceededData.prices[indexOfElement] + item.price;
         proceededData.annotationLabels[indexOfElement] = `${proceededData.annotationLabels[indexOfElement]}, ${item.name}`;
 
       }
-    })
+    });
 
     return proceededData;
   }
 
   private generateAnnotationObject(chartData: ProceededData): any {
-    const max = chartData.prices.reduce((prev, current) => (prev > current) ? prev : current)
+    const max = chartData.prices.reduce((prev, current) => (prev > current) ? prev : current);
     return {
         x: new Date(chartData.dates[chartData.prices.indexOf(max)]).getTime(),
         strokeDashArray: 0,
-        borderColor: "#775DD0",
+        borderColor: '#775DD0',
         offsetX: 0,
         label: {
-          borderColor: "#775DD0",
+          borderColor: '#775DD0',
           orientation: 'horizontally',
           offsetX: 34,
           style: {
-                fontSize: "12px",
-                color: "#fff",
-                background: "#775DD0"
+                fontSize: '12px',
+                color: '#fff',
+                background: '#775DD0'
               },
           text: chartData.annotationLabels[chartData.prices.indexOf(max)]
         }
-    }
+    };
   }
 
 

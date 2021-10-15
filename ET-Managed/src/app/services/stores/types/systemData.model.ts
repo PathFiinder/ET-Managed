@@ -1,66 +1,66 @@
 
 export interface SystemData {
-    loggedUser: LoggedUser,
-    applicationData: ApplicationData,
-    userData: UserData
+    loggedUser: LoggedUser;
+    applicationData: ApplicationData;
+    userData: UserData;
 }
 
 export interface LoggedUser {
-    userId: number,
-    userName: string,
-    userLastName: string,
-    nickName: string,
-    avatarId: number,
-    email: string
+    userId: number;
+    userName: string;
+    userLastName: string;
+    nickName: string;
+    avatarId: number;
+    email: string;
 }
 
 export interface ApplicationData {
-    navigationList: NavigationItem[],
-    systemInfo: SystemInfo,
-    menuExpanded: boolean,
-    avatarList: AvatarItem[]
+    navigationList: NavigationItem[];
+    systemInfo: SystemInfo;
+    menuExpanded: boolean;
+    avatarList: AvatarItem[];
 }
 
 export interface AvatarItem {
-    avatarId: number,
-    imgSource: string
+    avatarId: number;
+    imgSource: string;
 }
 export interface NavigationItem {
-    id: number,
-    name: string,
-    iconClass: string,
-    isActive: boolean,
-    path: string
+    id: number;
+    name: string;
+    iconClass: string;
+    isActive: boolean;
+    path: string;
 }
 
 export interface SystemInfo {
-    title: string,
-    author: string,
-    version: string,
-    lastUpdate: string,
-    copyrights: string
+    title: string;
+    author: string;
+    version: string;
+    lastUpdate: string;
+    copyrights: string;
 }
 
 export interface UserData {
-    notificationData: NotificationData
-    tasksData: TaskData,
-    budgetData: BudgetData,
-    chartsData: ChartsData,
-    calendarData: CalendarData
+    notificationData: NotificationData;
+    tasksData: TaskData;
+    budgetData: BudgetData;
+    chartsData: ChartsData;
+    calendarData: CalendarData;
 }
 
 export interface NotificationData {
-    notificationList: NotificationItem[],
-    isNewNotification: boolean
+    notificationList: NotificationItem[];
+    isNewNotification: boolean;
 }
 
 export interface NotificationItem {
-    id: number,
-    nameShort: string,
-    nameLong: string,
-    category: CategoryAndPriority,
-    isExpanded: boolean,
-    isActive: boolean
+    id: number;
+    nameShort: string;
+    nameLong: string;
+    category: CategoryAndPriority;
+    isExpanded: boolean;
+    isActive: boolean;
 }
 
 export enum CategoryAndPriority {
@@ -71,69 +71,71 @@ export enum CategoryAndPriority {
 }
 
 export interface TaskData {
-    tasksList: TasksItem[]
+    tasksList: TasksItem[];
 }
 
 export interface TasksItem {
-    id: number,
-    shortName: string,
-    description: string,
-    dataStart: Date,
-    dataEnd: Date,
-    isDone: boolean,
-    isActive: boolean,
-    priority: CategoryAndPriority
+    id: number;
+    shortName: string;
+    description: string;
+    dataStart: Date;
+    dataEnd: Date;
+    isDone: boolean;
+    isActive: boolean;
+    priority: CategoryAndPriority;
 }
 
 export interface BudgetData {
-    budgetList: BudgetItem[]
+    budgetList: BudgetItem[];
 }
 
 export interface BudgetItem {
-    range: string,
-    totalBudget: number,
-    monthBudgetItems: MonthBudgetItem[]
+    range: string;
+    totalBudget: number;
+    monthBudgetItems: MonthBudgetItem[];
 }
 
 export interface MonthBudgetItem {
-    id: number,
-    name: string,
-    description: string,
-    type: MoneyDestination,
-    price: number,
-    pucharseDate: string,
-    priority: CategoryAndPriority,
-    category: MoneyCategory,
-    paymentMethod: PaymentMethod
+    id: number;
+    name: string;
+    description: string;
+    type: MoneyDestination;
+    price: number;
+    pucharseDate: string;
+    priority: CategoryAndPriority;
+    category: ExpenseIncomeCategory;
+    paymentMethod: PaymentMethod;
 }
 
 export enum MoneyDestination {
-    EXPENSE = "expense",
-    INCOME = "income",
+    EXPENSE = 'expense',
+    INCOME = 'income',
     PLANNING_EXPENSE = 'planning expense'
 }
 
-export enum MoneyCategory {
-    BILLS = "Bills",
-    HOUSE = "House",
-    LOAN = "Loan",
-    PLANNING = "Planning"
+export enum ExpenseIncomeCategory {
+    BILLS = 'Bills',
+    LOAN = 'Loan',
+    HOUSE = 'House',
+    OTHER = 'Other',
+    PLANNING = 'Planning'
 }
 
 export enum PaymentMethod {
-    CASH = "cash",
-    CREDIT_CARD = "credit-card",
-    PAYPAL = "paypal"
+    CASH = 'cash',
+    CREDIT_CARD = 'credit-card',
+    PAYPAL = 'paypal'
 }
 
 export interface ChartsData {
-    chartsList: ChartItem[]
+    chartsList: ChartItem[];
 }
 
 export interface ChartItem {
 }
+
 export interface CalendarData {
-    calendarList: CalendarItem[]
+    calendarList: CalendarItem[];
 }
 
 export interface CalendarItem {
