@@ -6,9 +6,8 @@
   position: absolute
   top: 35px
   right: 280px
-  width: 200px
-  background-color: red
-  height: 50px
+  width: 300px
+  height: 60px
   display: flex
   flex-direction: row
   .stats_item
@@ -20,6 +19,16 @@
     .stats_item__single
       flex-basis: 50%
       text-align: center
-    .stats_item--count
+    .stats_item--input
+      flex: 50%
+      width: 80%
       font-weight: bold
-      font-size: 20px
+      font-size: 18px
+    .stats_item--input-title
+      padding-top: 5px
+  .stats_item--count
+    font-weight: bold
+    font-size: 18px
+    padding-top: 5px
+  .stats_item--title
+    padding-top: 5px

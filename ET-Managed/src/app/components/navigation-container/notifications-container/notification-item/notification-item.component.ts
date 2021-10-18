@@ -18,7 +18,7 @@ export class NotificationItemComponent implements OnInit {
     [CategoryAndPriority.NORMAL, () => this.getNormalPriority()],
     [CategoryAndPriority.IMPORTANT, () => this.getImportantPriority()],
     [CategoryAndPriority.VERY_IMPORTANT, () => this.getVeryImportantPriority()]
-  ])
+  ]);
 
   constructor(private store: Store) { }
 
@@ -26,50 +26,50 @@ export class NotificationItemComponent implements OnInit {
   }
 
   public changeNotificationItemToActive(notificationItemId: number, notificationItemIsActive: boolean, event: Event): void {
-    if(notificationItemIsActive) {
-      this.store.dispatch(updateNotificationItemIsActiveById({notificationItemId: notificationItemId}))
+    if (notificationItemIsActive) {
+      this.store.dispatch(updateNotificationItemIsActiveById({notificationItemId}));
     }
     event.stopPropagation();
   }
 
   public onExpandOrDropButtonClick(notificationItemId: number, notificationItemIsActive: boolean, event: Event): void {
-    this.store.dispatch(updateNotificationItemIsExpandedById({notificationItemId: notificationItemId}));
-    if(notificationItemIsActive) {
-      this.store.dispatch(updateNotificationItemIsActiveById({notificationItemId: notificationItemId}))
+    this.store.dispatch(updateNotificationItemIsExpandedById({notificationItemId}));
+    if (notificationItemIsActive) {
+      this.store.dispatch(updateNotificationItemIsActiveById({notificationItemId}));
     }
     event.stopPropagation();
   }
 
   public onExpandIconChange(isExpanded: boolean): string {
-    return isExpanded ? 'list-content__expandIcon--isExpanded' : 'list-content__expandIcon--noExpanded'
+    return isExpanded ? 'list-content__expandIcon--isExpanded' : 'list-content__expandIcon--noExpanded';
   }
 
   public onBinIconButtonChange(notificationItemId: number, notificationItemIsActive: boolean, event: Event): void {
-    this.store.dispatch(deleteNotificationItemById({notificationItemId: notificationItemId}));
-    if(notificationItemIsActive) {
-      this.store.dispatch(updateNotificationIsNew())
+    this.store.dispatch(deleteNotificationItemById({notificationItemId}));
+    if (notificationItemIsActive) {
+      this.store.dispatch(updateNotificationIsNew());
     }
     event.stopPropagation();
   }
 
   public definePriorityOfNotification(itemCategory: CategoryAndPriority): NotificationItemPriority {
-    return this.choosePriority.get(itemCategory)()
+    return this.choosePriority.get(itemCategory)();
   }
 
   private getIrrelevantPriority(): NotificationItemPriority {
-    return NotificationItemPriority.PRIORITY_IRRELEVANT
+    return NotificationItemPriority.PRIORITY_IRRELEVANT;
   }
 
   private getNormalPriority(): NotificationItemPriority {
-    return NotificationItemPriority.PRIORITY_NORMAL
+    return NotificationItemPriority.PRIORITY_NORMAL;
   }
 
   private getImportantPriority(): NotificationItemPriority {
-    return NotificationItemPriority.PRIORITY_IMPORTANT
+    return NotificationItemPriority.PRIORITY_IMPORTANT;
   }
 
   private getVeryImportantPriority(): NotificationItemPriority {
-    return NotificationItemPriority.PRIORITY_VERY_IMPORTANT
+    return NotificationItemPriority.PRIORITY_VERY_IMPORTANT;
   }
 
 }

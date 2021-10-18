@@ -1,6 +1,17 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import {  changeActiveNavigationItemById, changeIsMenuExpanded, deleteAllNotifications, deleteNotificationItemById, getSystemDataSuccess, hidePopupsOnNotificationList, updateNotificationIsNew, updateNotificationItemIsActiveById, updateNotificationItemIsExpandedById } from '../actions/system-data.actions';
-import { NotificationItem, SystemData } from '../types/systemData.model';
+import {
+  changeActiveNavigationItemById,
+  changeIsMenuExpanded,
+  deleteAllNotifications,
+  deleteNotificationItemById,
+  getSystemDataSuccess,
+  hidePopupsOnNotificationList,
+  updateNotificationIsNew,
+  updateNotificationItemIsActiveById,
+  updateNotificationItemIsExpandedById,
+  updateTotalMonthBudgetValueByRange
+} from '../actions/system-data.actions';
+import {BudgetItem, NotificationItem, SystemData} from '../types/systemData.model';
 
 export const initialState: SystemData = {
    loggedUser: null,
@@ -133,14 +144,16 @@ const reducer = createReducer(
                 notificationData: {
                     ...state.userData.notificationData,
                     notificationList: [
-                        ...state.userData.notificationData.notificationList.map(notificationItem => notificationItem.id === notificationItemId
+                        ...state.userData.notificationData.notificationList.
+                          map(notificationItem => notificationItem.id === notificationItemId
                             ? {
                                  ...notificationItem,
                                  isActive: false
                               }
                             : notificationItem),
                         ],
-                    isNewNotification: state.userData.notificationData.notificationList.filter(notificationItem => notificationItem.isActive === true).length <= 1 ? false : true
+                    isNewNotification: state.userData.notificationData.notificationList.
+                      filter(notificationItem => notificationItem.isActive === true).length > 1
                     }
                 }
             };
@@ -153,7 +166,8 @@ const reducer = createReducer(
                 notificationData: {
                     ...state.userData.notificationData,
                     notificationList: [
-                        ...state.userData.notificationData.notificationList.map((notificationItem: NotificationItem) => notificationItem.id === notificationItemId
+                        ...state.userData.notificationData.notificationList.
+                          map((notificationItem: NotificationItem) => notificationItem.id === notificationItemId
                             ? {
                                 ...notificationItem,
                                 isExpanded: !notificationItem.isExpanded
@@ -172,13 +186,33 @@ const reducer = createReducer(
                 ...state.userData,
                 notificationData: {
                     ...state.userData.notificationData,
-                    notificationList: state.userData.notificationData.notificationList.filter(notificationItem => notificationItem.id !== notificationItemId)
+                    notificationList: state.userData.notificationData.notificationList.
+                      filter(notificationItem => notificationItem.id !== notificationItemId)
                 }
             }
         };
+    }),
+  on(updateTotalMonthBudgetValueByRange, (state: SystemData, { range , monthBudget}) => {
+    return {
+      ...state,
+      userData: {
+        ...state.userData,
+        budgetData: {
+          ...state.userData.budgetData,
+          budgetList: state.userData.budgetData.budgetList.map((budgetItem: BudgetItem) =>
+            budgetItem.range === range ? {
+              ...budgetItem,
+              totalBudget: monthBudget
+            } :
+              budgetItem
+          )
+        }
+      }
+    };
     })
-  );
+);
 
-export function systemDataReducer(state: SystemData = initialState, action: Action) {
+
+export function systemDataReducer(state: SystemData = initialState, action: Action): any {
     return reducer(state, action);
   }

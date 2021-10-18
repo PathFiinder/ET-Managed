@@ -194,7 +194,6 @@ export const selectBudgetItemsMonthItemsTotalNumber = createSelector<any, any, m
   selectBudgetList,
   (budgetItems: models.BudgetItem[], props: any) => {
     const c = selectBudgetItemByRange.projector(budgetItems, { rangeToSelect: props.rangeToSelect})?.monthBudgetItems.length;
-    console.log(c)
     return c;
   }
 );

@@ -4,4 +4,8 @@
     <p class="stats_item__single stats_item--count">{{(activeBudgetItemsNumber | async) || 0}}</p>
     <p class="stats_item__single  stats_item--title">Active tasks</p>
   </div>
+  <div class="stats_item stats_item--input-container">
+    <input type="text" class="stats_item__single stats_item--input" (change)="onInputChange($event)" placeholder="Income value" value="{{(totalMonthBudget | async) || 0}}">
+    <p class="stats_item__single  stats_item--input-title">Total budget</p>
+  </div>
 </div>
